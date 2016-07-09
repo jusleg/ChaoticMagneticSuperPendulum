@@ -22,7 +22,8 @@ var t;		// Time (s)
 // Constants
 var MU=1.2566370614e-6;	// Permeability of free space (N/A^2), reference: https://en.wikipedia.org/wiki/Permeability_(electromagnetism)
 var PI=3.14159265359;	// Value of pi
-var T_MAX = 100;	// Maximum time allowed for pendulum to stop over a magnet
+var T_MAX = 100;	// Maximum time allowed for pendulum to stop over a magnet (s)
+var delta_t=0.01;		// Value of a step forward in time (s)
 
 
 
@@ -78,6 +79,9 @@ run() {
 		}
 		a = (F_g + F_f + F_m_tot) / m;	// Newton's second law to get instant pendulum acceleration
 		v = v + a*t;	// Pendulum's velocity is modified due to acceleration
-		x = x + v*t + 0.5*a*t^2;	// Position is modified
+		s = s + v*t + 0.5*a*t^2;	// Position of pendulum is modified
+		
+		canvas.("update pendulum s position")
+		t+=delta_t;	// Go forward in time by one step
 	}
 }
