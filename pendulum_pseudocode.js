@@ -75,7 +75,7 @@ run() {
 			var d = sqrt(h^2+r^2+R^2);	// Distance between pendulum and n-th magnet
 			
 			// Sum contribution of all magnets into the total force (2D vector addition)
-			F_m_tot += MU * pol * m_pol_n / (4 * PI * d^2);
+			F_m_tot += MU * pol * m_pol_n * str^2 / (4 * PI * d^2);
 		}
 		a = (F_g + F_f + F_m_tot) / m;	// Newton's second law to get instant pendulum acceleration
 		v = v + a*t;	// Pendulum's velocity is modified due to acceleration
