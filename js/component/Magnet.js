@@ -1,12 +1,16 @@
 function Magnet(id, x, y, polarity, strength) {
-	Item.call(this, id);
+	Circle.call(this, id, x, y, 10);
 	this.polarity = polarity;
-	this.point = new Location(id + "_point", x, y);
 	this.strength = strength;
 }
 
-Magnet.inherits(Item);
+Magnet.inherits(Circle);
 
-Magnet.method(function hello() {
-	console.log("Hello world");
+Magnet.method(function draw(ctx) {
+	ctx.beginPath();
+	ctx.arc(this.point.x,this.point.y,this.radius,0,2*Math.PI);
+	ctx.fillStyle = 'green';
+	ctx.fill();
+	ctx.stroke();
+
 });

@@ -1,5 +1,5 @@
-function Location(id, x, y) {
-	Item.call(this, id);
+function Location(x, y) {
+	Item.call(this);
 	this.x = x;
 	this.y = y;
 }

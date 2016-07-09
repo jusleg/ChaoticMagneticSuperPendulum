@@ -1,8 +1,8 @@
-var c = document.getElementById("canvas");
-c.height = 200;
-c.width = 200;
-var ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.arc(95,50,40,0,2*Math.PI);
-ctx.stroke();
+// Draw on canvas
+var ctx = canvas.getContext("2d");
+for(var i=0; i < map.length; i++) {
+	map[i].draw(ctx);
+}
 
+// Draw magnets
+magnet.draw(ctx);
