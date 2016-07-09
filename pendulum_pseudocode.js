@@ -26,7 +26,6 @@ var T_MAX = 100;	// Maximum time allowed for pendulum to stop over a magnet (s)
 var delta_t=0.01;		// Value of a step forward in time (s)
 
 
-
 //////////////////////////////////////////
 //		Main Program		//
 //////////////////////////////////////////
