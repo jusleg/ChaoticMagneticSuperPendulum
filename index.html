@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8"/>
-        
+        <link rel="stylesheet" type="text/css" href="style.css">
         <!--jQuery Import -->
         <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-        
+        <script src="slider.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -14,36 +14,80 @@
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <style>
-            #canvas{
-                width:100%;
-                height: 100%;
-                background-color: black;
-            }
-        </style>
-
-
-	<!-- All JS -->
+        
+        <!-- All JS -->
         <script src="js/Constant.js"></script>
         <script src="js/Item.js"></script>
 	
- 	<script src="js/component/Location.js"></script>
- 	<script src="js/component/Magnet.js"></script>
- 	<script src="js/component/Pendulum.js"></script>
-       
-	<script src="js/main.js"></script>
-	
+        <script src="js/component/Location.js"></script>
+        <script src="js/component/Magnet.js"></script>
+        <script src="js/component/Pendulum.js"></script>
+
+        <script src="js/main.js"></script>
+    
     </head>
     
     <body>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-12" style="height:100%;">
-                    <canvas id="canvas"></canvas>
+                <div class="col-sm-8">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Simulation</h3>
+                      </div>
+                      <div class="panel-body" align="center">
+                        <canvas id="canvas"></canvas>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Parameters</h3>
+                      </div>
+                      <div class="panel-body">
+                          <p>Mass of pendulum: <span id="pendulumMass">1</span> kg</p>
+                          <input type="range" id="sliderMass" min="1" max="200" value="100"/>
+                          <br>
+                          <p>Magnet strength: <span id="magnetStrength">10</span> A/m</p>
+                          <input type="range" id="sliderStrength" min="0" max="1000" value="100"/>
+                          <br>
+                          <p>Friction: <span id="friction">10</span> kg/s</p>
+                          <input type="range"  id="sliderFriction" min="0" max="1000" value="100"/>
+                          <br>
+                          <p>Gravity: <span id="gravity">9.8</span> kg/s<sup>2</sup></p>
+                          <input type="range" id="sliderGravity" min="0" max="300" value="98"/>
+                          <br>
+                          <p>Height of pendulum: <span id="pendulumHeight">0.01</span> m</p>
+                          <input type="range" id="sliderHeight" min="0" max="100" value="1"/>
+                          <br>
+                          <button type="button" id="buttonMagPos" class="btn btn-danger col-xs-12">Add North Magnet</button>
+                          <br><br>
+                          <button type="button" id="buttonMagPos" class="btn btn-primary col-xs-12">Add South Magnet</button>
+                          <br><br>
+                          <button type="button" class="btn btn-warning col-xs-12">Start</button>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>Lorem Ipsum</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie urna eget nisl semper bibendum. Nulla egestas quam sit amet pretium varius. Fusce non efficitur odio. Maecenas congue lectus est, eget volutpat nibh vehicula vel. Donec felis sapien, vehicula interdum hendrerit eget, molestie vitae ex. Cras at porttitor turpis. Mauris in porttitor urna, sed feugiat arcu. Maecenas fermentum, justo et feugiat tempus, diam urna porta lorem, non tempus ipsum lorem sit amet enim. Praesent varius dictum velit, et euismod nibh varius ac. Sed quis scelerisque nulla. Nunc convallis porta eleifend. Curabitur non dolor nec arcu suscipit fermentum ultrices ac nisl. Vestibulum iaculis ut augue sed consequat.
+                        <br>
+                        Fusce nec metus ornare, rutrum sapien sit amet, sagittis nisl. Duis pharetra risus eget bibendum pharetra. Aliquam congue fringilla eros vitae pretium. Nulla id sapien aliquam, dignissim leo et, luctus tortor. Vestibulum malesuada sed nunc efficitur sodales. Sed quis risus consequat, congue mi sit amet, vestibulum odio. Fusce dui magna, mattis sit amet justo vel, finibus porttitor ante. Pellentesque viverra tristique sapien in vestibulum. Morbi sem nulla, pulvinar sed mauris ac, iaculis bibendum turpis. Morbi nulla erat, euismod nec metus quis, aliquam ornare magna. Vestibulum vel purus tellus.
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <h4>The team</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie urna eget nisl semper bibendum. Nulla egestas quam sit amet pretium varius. Fusce non efficitur odio. Maecenas congue lectus est, eget volutpat nibh vehicula vel. Donec felis sapien, vehicula interdum hendrerit eget, molestie vitae ex. Cras at porttitor turpis. Mauris in porttitor urna, sed feugiat arcu. Maecenas fermentum, justo et feugiat tempus, diam urna porta lorem, non tempus ipsum lorem sit amet enim. Praesent varius dictum velit, et euismod nibh varius ac. Sed quis scelerisque nulla. Nunc convallis porta eleifend. Curabitur non dolor nec arcu suscipit fermentum ultrices ac nisl. Vestibulum iaculis ut augue sed consequat.
+                        <br>
+                        Fusce nec metus ornare, rutrum sapien sit amet, sagittis nisl. Duis pharetra risus eget bibendum pharetra. Aliquam congue fringilla eros vitae pretium. Nulla id sapien aliquam, dignissim leo et, luctus tortor. Vestibulum malesuada sed nunc efficitur sodales. Sed quis risus consequat, congue mi sit amet, vestibulum odio. Fusce dui magna, mattis sit amet justo vel, finibus porttitor ante. Pellentesque viverra tristique sapien in vestibulum. Morbi sem nulla, pulvinar sed mauris ac, iaculis bibendum turpis. Morbi nulla erat, euismod nec metus quis, aliquam ornare magna. Vestibulum vel purus tellus.
+                    </p>
                 </div>
             </div>
         </div>
- 
-	<script src="js/Canvas.js"></script>
     </body>
 </html>
