@@ -1,5 +1,5 @@
 //pendulum position
-var position = new Location(start_coord.x, start_coord.y);
+var position = new Location(pendulum.point.x, pendulum.point.y);
 
 // velocity vector
 var velocity = new Location(0,0);

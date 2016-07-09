@@ -18,5 +18,5 @@ Circle.method(function move(x, y) {
 });
 
 Circle.method(function contains(x, y) {
-	return Math.pow(x - this.x, 2) +  Math.pow(y - this.y) <= Math.pow(this.radius, 2);
+	return Math.pow(x - this.point.x, 2) + Math.pow(y - this.point.y, 2) <= Math.pow(this.radius, 2);
 });
