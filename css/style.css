@@ -1,0 +1,15 @@
+body{
+    padding-top:20px;
+}
+
+#canvas{
+    width:100%;
+    padding-bottom: 50%;
+    max-width: 600px;
+    max-height: 600px;
+    background-color: black;
+}
+#buttonMagPos{
+    margin-right: 10px;
+}
+
