@@ -5,4 +5,6 @@ for(var i=0; i < map.length; i++) {
 }
 
 // Draw magnets
-magnet.draw(ctx);
+for(var i=0; i < magnets.length; i++) {
+	magnets[i].draw(ctx);
+}

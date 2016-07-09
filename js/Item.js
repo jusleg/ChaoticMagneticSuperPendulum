@@ -6,14 +6,12 @@ items = {};
  * All other classes should inherit this class, or inherit a descendant of it.
  */
 function Item(id){
-console.log(id);
     // Ignore on undefined caused by uber
     if(id == undefined)
         return;
 
     // Mandatory variables
 	this.id = id;
-    // console.log(id);
     if(items[this.id] != undefined)
         alert("Duplicated id: " + this.id);
     else
@@ -34,7 +32,7 @@ Function.prototype.method = function (func) {
 Function.method(function inherits(parent) {
     this.prototype = new parent();
     var d = {}, 
-        p = this.prototype;
+    p = this.prototype;
     this.prototype.constructor = parent; 
     this.method(function uber(name) {
         if (!(name in d)) {

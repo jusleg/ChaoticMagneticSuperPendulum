@@ -17,4 +17,12 @@ for(var i=1; i <= 5; i++) {
 }
 
 // Magnets
-magnet = new Magnet("magnet", 90,90,1);
+magnets = [];
+var totalMagnets = 10;
+var virtualRadius = 150;
+for(var i=1; i <= totalMagnets; i++) {
+	magnet = new Magnet("magnet" + i, -1,-1,1);
+	magnet.point.x = canvasCenterX - virtualRadius * Math.sin((2*PI*i)/totalMagnets);
+	magnet.point.y = canvasCenterY - virtualRadius * Math.cos((2*PI*i)/totalMagnets);
+	magnets.push(magnet);
+}
