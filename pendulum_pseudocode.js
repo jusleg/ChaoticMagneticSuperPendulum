@@ -62,10 +62,10 @@ run() {
 		// Calculate each force contribution
 
 		// Gravity (Hooke law)
-		F_g = -k_h * s;
+		F_g = -k_h * position;
 
 		// Friction
-		F_f = -k_f * v;
+		F_f = -k_f * velocity;
 
 		// Magnetic force
 		var F_m_tot;	// Total magnetic force
