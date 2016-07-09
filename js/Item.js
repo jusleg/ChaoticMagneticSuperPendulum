@@ -6,7 +6,7 @@ items = {};
  * All other classes should inherit this class, or inherit a descendant of it.
  */
 function Item(id){
-
+console.log(id);
     // Ignore on undefined caused by uber
     if(id == undefined)
         return;
