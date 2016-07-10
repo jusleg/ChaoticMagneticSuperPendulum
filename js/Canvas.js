@@ -27,14 +27,18 @@ function redraw() {
 // Call update by default
 redraw();
 
+// Correct x and y
+function getRelativePoint(e, rect) {
+	return new Location((e.clientX - rect.left)*(canvas.width/rect.width),(e.clientY - rect.top)*(canvas.height/rect.height));
+}
+
 // Change magnet polarity
 canvas.addEventListener("dblclick", function(e) {
 	var rect = canvas.getBoundingClientRect();
-	x = e.clientX - rect.left;
-	y = e.clientY - rect.top;
-
+	point = getRelativePoint(e,rect);
+	
 	for(var i=0; i < magnets.length; i++) {
-		if(magnets[i].contains(x,y)) {
+		if(magnets[i].contains(point.x,point.y)) {
 			magnets[i].togglePolarity();
 			console.log(magnets[i].id + " changed polarity to " + magnets[i].polarity);
 			break;
@@ -47,11 +51,10 @@ canvas.addEventListener("dblclick", function(e) {
 // Check for canvas magnet
 var onMouseDown =  function(e) {
 	var rect = canvas.getBoundingClientRect();
-	x = e.clientX - rect.left;
-	y = e.clientY - rect.top;
-
+	point = getRelativePoint(e,rect);
+	
 	for(var i=0; i < parts.length; i++) {
-		if(parts[i].contains(x,y)) {
+		if(parts[i].contains(point.x,point.y)) {
 			console.log(parts[i].id + " selected!");
 			selectedMagnet = parts[i];
 			break;
@@ -72,12 +75,11 @@ canvas.addEventListener("mouseup", onMouseUp);
 
 var onMouseMove = function(e) {
 	var rect = canvas.getBoundingClientRect();
-	x = e.clientX - rect.left;
-	y = e.clientY - rect.top;
+	point = getRelativePoint(e,rect);
 
 	if(selectedMagnet != undefined) {
-		selectedMagnet.point.x = x;
-		selectedMagnet.point.y = y;
+		selectedMagnet.point.x = point.x;
+		selectedMagnet.point.y = point.y;
 		redraw();
 	}	
 }
