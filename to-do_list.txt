@@ -1,6 +1,7 @@
 EASY:------------
 Functionality "add magnet" button
 Draw trace UNDER magnets and pendulum
+Make trace be drawn only after start button has been pressed (right now, moving pendulum by hand withotu pressing start still creates a trace)
 Make the frame rate slider effective
 Make magnet movement and polarity double-click compatible with mobile
 Make default value of magnet strength = 15*1e5
