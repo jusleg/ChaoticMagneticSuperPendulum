@@ -2,6 +2,8 @@ function add(loc1, loc2, val1, val2) {
 	return new Location(loc1.x*val1 + loc2.x*val2, loc1.y*val1 + loc2.y*val2);
 }
 
+function mag_force
+
 function simulateStep(){
 
 	// Save space
@@ -36,20 +38,16 @@ function simulateStep(){
 		//console.log("d: " + d);
 	
 		// Sum contribution of all magnets into the total force (2D vector addition)
-		F_m_tot.x += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,2)) * (position.x - magnet.point.x) * Math.cos(Math.atan(Math.abs(position.y-magnet.point.y)/Math.abs(position.x-magnet.point.x)));
-		F_m_tot.y += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,2)) * (position.y - magnet.point.y) * Math.sin(Math.atan(Math.abs(position.y-magnet.point.y)/Math.abs(position.x-magnet.point.x)));
+		F_m_tot = add (F_m_tot, add(position, magnet.point, 1, -1), 1, MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) );
 		//console.log("F_m_tot: " + F_m_tot.toString());
 	}
-	acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / mass;
-	acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / mass;
+	acceleration = add( add(F_grav, F_fric, 1, 1), F_m_tot, 1, 1);
 	//console.log("Acc: " + acceleration.toString());
 	
-	velocity.x += acceleration.x *DELTA_T;
-	velocity.y += acceleration.y *DELTA_T;
+	velocity = add (velocity, acceleration, 1, DELTA_T);
 	//console.log("Velocity: " + velocity.toString());
 
-	position.x += velocity.x*DELTA_T + 0.5*acceleration.x*Math.pow(DELTA_T,2);
-	position.y += velocity.y*DELTA_T + 0.5*acceleration.y*Math.pow(DELTA_T,2);
+	position = add (add(position, velocity, 1, DELTA_T), acceleration, 1, 0.5*Math.pow(DELTA_T,2));
 	//console.log("Position: " + position.toString());
 
 	t+=DELTA_T;	// Go forward in time by one step
