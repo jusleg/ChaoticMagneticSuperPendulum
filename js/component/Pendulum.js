@@ -7,6 +7,7 @@ function Pendulum(id, x, y, polarity, vx, vy, ax, ay, mass, height, strength) {
 	this.trace = [];
 	this.traceEvery = 45;
 	this.traceNow = 0;
+	this.enableTrace = false;
 }
 
 Pendulum.inherits(Magnet);
@@ -14,7 +15,7 @@ Pendulum.inherits(Magnet);
 Pendulum.method(function draw() {
 
 	// Store old position
-	if(++this.traceNow == this.traceEvery) {
+	if(++this.traceNow == this.traceEvery && this.enableTrace) {
 		this.trace.push(new Location(this.point.x, this.point.y));
 		this.traceNow = 0;
 	}
@@ -25,14 +26,7 @@ Pendulum.method(function draw() {
 		this.color = 'cyan';
 	}
 
-	// Draw trace
-	ctx.beginPath();
-	for(var i=0; i < this.trace.length; i++) {
-		ctx.strokeStyle = 'orange';
-		ctx.arc(this.trace[i].x, this.trace[i].y, 0.01, 0, 2 * Math.PI, true);
-	}
-	ctx.stroke();
-	
+		
 	// Draw circle
 	ctx.beginPath();
 	ctx.arc(this.point.x,this.point.y,this.radius,0,2*Math.PI);
@@ -43,6 +37,16 @@ Pendulum.method(function draw() {
 
 	
 	
+});
+
+Pendulum.method(function drawTrace() {
+	// Draw trace
+	ctx.beginPath();
+	for(var i=0; i < this.trace.length; i++) {
+		ctx.strokeStyle = 'orange';
+		ctx.arc(this.trace[i].x, this.trace[i].y, 0.01, 0, 2 * Math.PI, true);
+	}
+	ctx.stroke();
 });
 
 Pendulum.method(function toString(){

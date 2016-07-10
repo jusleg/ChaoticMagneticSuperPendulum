@@ -1,5 +1,6 @@
 startBtn = document.getElementById("start");
 startBtn.addEventListener("click", function() {
+	pendulum.enableTrace = true;
 	updateValues();
 	setInterval(function() {
 		simulateStep();

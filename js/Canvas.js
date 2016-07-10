@@ -9,7 +9,10 @@ function redraw() {
 		map[i].draw(ctx);
 	}
 
-	// Draw line
+	// Draw trace
+	pendulum.drawTrace();
+
+	// Draw center line
 	ctx.beginPath();
 	ctx.lineWidth=4;
 	ctx.moveTo(canvasCenterX,canvasCenterY);

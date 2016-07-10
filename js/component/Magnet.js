@@ -15,6 +15,7 @@ Magnet.method(function draw(ctx) {
 	ctx.beginPath();
 	ctx.arc(this.point.x,this.point.y,this.radius,0,2*Math.PI);
 	ctx.fillStyle = this.color;
+	ctx.strokeStyle = 'black';
 	ctx.fill();
 	ctx.stroke();
 });
