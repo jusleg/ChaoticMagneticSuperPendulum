@@ -30,6 +30,8 @@
     
     <body>
         <div class="container">
+            <h2>Magnetic Pendulum Simulator</h2>
+            <h4 style="color:gray;">by Amir Bawab, Félix Léger and Justin Léger</h4>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="panel panel-default">
@@ -53,7 +55,7 @@
                           <p>Magnet strength: <span id="magnetStrength">1000000</span> A/m</p>
                           <input type="range" id="sliderStrength" min="0" max="1000" value="100"/>
                           <br>
-                          <p>Friction: <span id="friction">0.1</span> kg/s</p>
+                          <p>Friction: <span id="friction">1</span> kg/s</p>
                           <input type="range"  id="sliderFriction" min="0" max="100" value="10"/>
                           <br>
                           <p>Gravity: <span id="gravity">9.8</span> kg/s<sup>2</sup></p>
@@ -61,9 +63,6 @@
                           <br>
                           <p>Height of pendulum: <span id="pendulumHeight">0.01</span> m</p>
                           <input type="range" id="sliderHeight" min="0" max="100" value="1"/>
-                          <br>
-                          <p>frame rate: <span id="deltaT">0.01</span></p>
-                          <input type="range" id="sliderFrame" min="0" max="100" value="10"/>
                           <br>
                           <button type="button" id="addNorth" class="btn btn-danger col-xs-12">Add Magnet</button>
                           <br><br>
