@@ -18,3 +18,9 @@ resetBtn.addEventListener("click", function() {
 	pendulum.flushTrace();
 	redraw();
 });
+
+addNorth = document.getElementById("addNorth");
+addNorth.addEventListener("click", function() {
+	addMagnet(canvas.width*0.1, canvas.height*0.1);	
+	redraw();
+});
