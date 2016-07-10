@@ -36,8 +36,8 @@ function simulateStep(){
 		//console.log("d: " + d);
 	
 		// Sum contribution of all magnets into the total force (2D vector addition)
-		F_m_tot.x += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) * (position.x - magnet.point.x) 
-		F_m_tot.y += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) * (position.y - magnet.point.y));
+		F_m_tot.x += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) * (position.x - magnet.point.x); 
+		F_m_tot.y += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) * (position.y - magnet.point.y);
 		//console.log("F_m_tot: " + F_m_tot.toString());
 	}
 	acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / mass;
