@@ -1,11 +1,12 @@
-EASY:------------
-Make the frame rate slider effective
-Make magnet movement and polarity double-click compatible with mobile
+
 
 
 NEEDS MORE WORK:--------
 Add a "Pause" button
-Add Slider that determines magnets in the field
 Add a button that adds a second pendulum (pendulums don't interact with each other), see effect of chaos theory
 Allow to remove magnets
 Buy the $15 magnetic pendulum at Indigo
+
+SKIPPED------------
+Make magnet movement and polarity double-click compatible with mobile
+Add Slider that determines magnets in the field
