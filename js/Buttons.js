@@ -4,7 +4,7 @@ startBtn.addEventListener("click", function() {
 	setInterval(function() {
 		simulateStep();
 		redraw();
-	}, 1000);	
+	}, 1);	
 });
 
 switchPolarity = document.getElementById("switchPolar");

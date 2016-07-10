@@ -21,10 +21,10 @@ function updateValues() {
 	console.log("Friction: " + k_f);
 
 	for(var i=0; i < magnets.length; i++) {
-		magnets[i].strength = document.getElementById("sliderStrength").value/10;
+		magnets[i].strength = document.getElementById("sliderStrength").value/10*1e5;
 		console.log(magnets[i].toString());
 	}	
-	pendulum.strength = document.getElementById("sliderStrength").value/10;
+	pendulum.strength = document.getElementById("sliderStrength").value/10*1e5;
 	console.log(pendulum.toString());
 	console.log("-----------------------------------");
 }
