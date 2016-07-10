@@ -6,3 +6,9 @@ startBtn.addEventListener("click", function() {
 		redraw();
 	}, 1000);	
 });
+
+switchPolarity = document.getElementById("switchPolar");
+switchPolar.addEventListener("click", function() {
+	pendulum.togglePolarity();
+	redraw();
+});

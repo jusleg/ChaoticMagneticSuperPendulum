@@ -18,6 +18,23 @@ function redraw() {
 // Call update by default
 redraw();
 
+// Change magnet polarity
+canvas.addEventListener("dblclick", function(e) {
+	var rect = canvas.getBoundingClientRect();
+	x = e.clientX - rect.left;
+	y = e.clientY - rect.top;
+
+	for(var i=0; i < magnets.length; i++) {
+		if(magnets[i].contains(x,y)) {
+			magnets[i].togglePolarity();
+			console.log(magnets[i].id + " changed polarity to " + magnets[i].polarity);
+			break;
+		}
+	}
+
+	redraw();
+});
+
 // Check for canvas magnet
 canvas.addEventListener("mousedown", function(e) {
 	var rect = canvas.getBoundingClientRect();
