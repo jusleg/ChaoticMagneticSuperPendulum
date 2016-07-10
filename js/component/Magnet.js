@@ -1,5 +1,5 @@
 function Magnet(id, x, y, polarity, strength) {
-	Circle.call(this, id, x, y, 15);
+	Circle.call(this, id, x, y, 10);
 	this.polarity = polarity;
 	this.strength = strength;
 }

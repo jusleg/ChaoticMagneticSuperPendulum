@@ -5,7 +5,7 @@ function Pendulum(id, x, y, polarity, vx, vy, ax, ay, mass, height, strength) {
 	this.mass = mass;
 	this.height = height;
 	this.trace = [];
-	this.traceEvery = 20;
+	this.traceEvery = 45;
 	this.traceNow = 0;
 }
 
