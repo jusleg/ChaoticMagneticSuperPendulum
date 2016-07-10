@@ -19,7 +19,7 @@ function updateValues() {
 	k_f=document.getElementById("sliderFriction").value/10; // Friction force coefficient (kg/s)
 
 	for(var i=0; i < magnets.length; i++) {
-		magnets[i].strength = document.getElementById("sliderStrength").value*1e6;
+		magnets[i].strength = document.getElementById("sliderStrength").value/10;
 	}	
-	pendulum.strenght = document.getElementById("sliderStrength").value*1e6;
+	pendulum.strength = document.getElementById("sliderStrength").value/10;
 }

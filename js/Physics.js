@@ -9,6 +9,8 @@ function simulateStep(){
 	var strengthMagnets = pendulum.strength;
 	var mass = pendulum.mass;
 
+	console.log(strengthMagnets);
+
 	//Gravity
 	F_grav = new Location(-k_h*(position.x-canvasCenterX),-k_h*(position.y-canvasCenterY));
 
@@ -19,9 +21,10 @@ function simulateStep(){
 	F_m_tot = new Location(0,0);
 	for (var i=0; i < magnets.length; i++){
 		var magnet = magnets[i];
-		var R = Math.sqrt( Math.pow(position.x-canvasCenterX, 2) + Math.pow(position.y-canvasCenterY ,2) );	// Distance between pendulum and center of the plane
-		var r = Math.sqrt( Math.pow(magnet.point.x - canvasCenterX,2) + Math.pow(magnet.point.y - canvasCenterY,2) );	// Distance between n-th magnet and center of the plane
-		var d = Math.sqrt(Math.pow(h,2)+Math.pow(r,2)+Math.pow(R,2));	// Distance between pendulum and n-th magnet
+		//var R = Math.sqrt( Math.pow(position.x-canvasCenterX, 2) + Math.pow(position.y-canvasCenterY ,2) );	// Distance between pendulum and center of the plane
+		//var r = Math.sqrt( Math.pow(magnet.point.x - canvasCenterX,2) + Math.pow(magnet.point.y - canvasCenterY,2) );	// Distance between n-th magnet and center of the plane
+		var r = Math.sqrt(Math.pow(position.x - magnet.point.x ,2) + Math.pow(position.y - magnet.point.y ,2) );
+		var d = Math.sqrt(Math.pow(h,2)+Math.pow(r,2));	// Distance between pendulum and n-th magnet
 			
 		// Sum contribution of all magnets into the total force (2D vector addition)
 		F_m_tot.x += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,2) * Math.cos(Math.atan(Math.abs(position.x-magnet.point.x)/Math.abs(position.y-magnet.point.y))));
