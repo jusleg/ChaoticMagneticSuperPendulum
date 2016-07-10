@@ -4,8 +4,8 @@
 
 // Create canvas
 var canvas = document.getElementById("canvas");
-canvas.height = 1000;
-canvas.style.width="100%";
+canvas.height = 900;
+canvas.style.width="80%";
 canvas.width = canvas.height;
 
 // Generate canvas center
@@ -22,7 +22,7 @@ for(var i=1; i <= 5; i++) {
 parts = [];
 magnets = [];
 var totalMagnets = 5;
-var virtualRadius = map[3].radius;
+var virtualRadius = map[2].radius;
 for(var i=1; i <= totalMagnets; i++) {
 	magnet = new Magnet("magnet" + i, -1/*x*/,-1/*y*/,1/*polarity*/,-1/*strength*/);
 	magnet.point.x = canvasCenterX - virtualRadius * Math.sin((2*PI*i)/totalMagnets);
