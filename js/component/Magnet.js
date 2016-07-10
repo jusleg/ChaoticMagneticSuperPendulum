@@ -17,5 +17,8 @@ Magnet.method(function draw(ctx) {
 	ctx.fillStyle = this.color;
 	ctx.fill();
 	ctx.stroke();
+});
 
+Magnet.method(function toString(){
+	return "Magnet: " + this.id + ", Polarity: " + this.polarity + ", Strength: " + this.strength;
 });

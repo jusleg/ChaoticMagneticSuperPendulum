@@ -9,36 +9,46 @@ function simulateStep(){
 	var strengthMagnets = pendulum.strength;
 	var mass = pendulum.mass;
 
-	console.log(strengthMagnets);
+	console.log("----------------- Simulate Step -----------------");
+	console.log(pendulum.toString());
 
 	//Gravity
 	F_grav = new Location(-k_h*(position.x-canvasCenterX),-k_h*(position.y-canvasCenterY));
+	console.log("F_grav: " + F_grav.toString());	
 
 	// Friction
 	F_fric = new Location(-k_f*velocity.x, -k_f*velocity.y);
+	console.log("F_fric: " + F_fric.toString());
 
 	// Magnetic force
 	F_m_tot = new Location(0,0);
 	for (var i=0; i < magnets.length; i++){
 		var magnet = magnets[i];
-		//var R = Math.sqrt( Math.pow(position.x-canvasCenterX, 2) + Math.pow(position.y-canvasCenterY ,2) );	// Distance between pendulum and center of the plane
-		//var r = Math.sqrt( Math.pow(magnet.point.x - canvasCenterX,2) + Math.pow(magnet.point.y - canvasCenterY,2) );	// Distance between n-th magnet and center of the plane
+		console.log(magnet.toString());
+	
 		var r = Math.sqrt(Math.pow(position.x - magnet.point.x ,2) + Math.pow(position.y - magnet.point.y ,2) );
+		console.log("r: " + r);
 		var d = Math.sqrt(Math.pow(h,2)+Math.pow(r,2));	// Distance between pendulum and n-th magnet
-			
+		console.log("d: " + d);
+	
 		// Sum contribution of all magnets into the total force (2D vector addition)
 		F_m_tot.x += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,2) * Math.cos(Math.atan(Math.abs(position.x-magnet.point.x)/Math.abs(position.y-magnet.point.y))));
 		F_m_tot.y += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,2) * Math.sin(Math.atan(Math.abs(position.x-magnet.point.x)/Math.abs(position.y-magnet.point.y))));
-		console.log("F_m_tot: " + F_m_tot.toString() + ", F_grav: " + F_grav.toString());
+		console.log("F_m_tot: " + F_m_tot.toString());
 	}
 	acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / mass;
 	acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / mass;
+	console.log("Acc: " + acceleration.toString());
 	
 	velocity.x += acceleration.x *DELTA_T;
 	velocity.y += acceleration.y *DELTA_T;
+	console.log("Velocity: " + velocity.toString());
 
 	position.x += velocity.x*DELTA_T + 0.5*acceleration.x*Math.pow(DELTA_T,2);
 	position.y += velocity.y*DELTA_T + 0.5*acceleration.y*Math.pow(DELTA_T,2);
+	console.log("Position: " + position.toString());
 
 	t+=DELTA_T;	// Go forward in time by one step
+	console.log("t: " + t);
+	console.log("-------------------------------------------------");
 }
