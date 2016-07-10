@@ -2,6 +2,7 @@ EASY:------------
 Functionality "add magnet" button
 Draw trace UNDER magnets and pendulum
 Make the frame rate slider effective
+Make magnet movement and polarity double-click compatible with mobile
 Make default value of magnet strength = 15*1e5
 
 
