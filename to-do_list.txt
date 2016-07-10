@@ -1,0 +1,12 @@
+EASY:------------
+Remove the debug button
+Functionality "add magnet" button
+Make the frame rate slider effective
+Implement fixed length for pendulum string (can't go over certain radius)
+Make default value of magnet strength = 15*1e5
+
+
+NEEDS MORE WORK:--------
+Add a "Pause" button
+Allow to remove magnets
+Find conditions to declare pendulum has stopped over a magnet (low velocity and over magnet)
