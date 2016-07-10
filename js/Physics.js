@@ -42,10 +42,14 @@ function simulateStep(){
 	}
 	acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / mass;
 	acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / mass;
-	//console.log("Acc: " + acceleration.toString());
-	
 	velocity.x += acceleration.x *DELTA_T;
 	velocity.y += acceleration.y *DELTA_T;
+    if(acceleration.y>5e5||acceleration.x>5e5){
+                              velocity.y=0;
+                              velocity.x=0;
+                              acceleration.x=0;
+                              acceleration.y=0;
+                             };
 	//console.log("Velocity: " + velocity.toString());
 
 	position.x += velocity.x*DELTA_T + 0.5*acceleration.x*Math.pow(DELTA_T,2);
