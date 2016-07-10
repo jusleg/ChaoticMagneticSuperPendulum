@@ -14,5 +14,8 @@ $( document ).ready(function() {
     $('#sliderHeight').on("change mousemove", function() {
         $("#pendulumHeight").html($("#sliderHeight").val()/100.0);
     });
+    $('#sliderFrame').on("change mousemove", function() {
+        $("#deltaT").html($("#sliderFrame").val()/1000.0);
+    });
 });
 
