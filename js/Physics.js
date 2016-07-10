@@ -4,7 +4,6 @@ function add(loc1, loc2, val1, val2) {
 
 var halt = false;
 function simulateStep(){
-    var done = false;
 	// Save space
 	var position = pendulum.point;
 	var velocity = pendulum.velocity;
@@ -42,9 +41,7 @@ function simulateStep(){
 		
 		var thresh = 2000;
 		if(d < 10) {
-			console.log("Close!");
 			if(Math.sqrt(Math.pow(velocity.x,2) + Math.pow(velocity.y,2)) < thresh)	{
-				console.log("Stop!");
 				position.x = magnet.point.x;
 				position.y = magnet.point.y;
 				halt = true;
@@ -62,7 +59,6 @@ function simulateStep(){
 	acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / mass;
 	velocity.x += acceleration.x *DELTA_T;
 	velocity.y += acceleration.y *DELTA_T;
-
 	//console.log("Velocity: " + velocity.toString());
 
 	position.x += velocity.x*DELTA_T + 0.5*acceleration.x*Math.pow(DELTA_T,2);
