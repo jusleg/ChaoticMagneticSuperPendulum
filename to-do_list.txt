@@ -1,6 +1,6 @@
 EASY:------------
 Functionality "add magnet" button
-Add "Reset trace" button
+Draw trace UNDER magnets and pendulum
 Make the frame rate slider effective
 Make default value of magnet strength = 15*1e5
 
