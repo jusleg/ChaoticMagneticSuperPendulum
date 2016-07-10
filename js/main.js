@@ -2,6 +2,9 @@
  * This class should construct the components
 **/
 
+// Pause
+var pause = false;
+
 // Create canvas
 var canvas = document.getElementById("canvas");
 canvas.height = 500;
