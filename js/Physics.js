@@ -1,3 +1,7 @@
+function add(loc1, loc2) {
+	return new Location(loc1.x+loc2.x, loc1.y+loc2.y);
+}
+
 function simulateStep(){
 
 	// Save space
