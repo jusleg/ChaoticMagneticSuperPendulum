@@ -45,7 +45,7 @@ canvas.addEventListener("dblclick", function(e) {
 });
 
 // Check for canvas magnet
-canvas.addEventListener("mousedown", function(e) {
+var onMouseDown =  function(e) {
 	var rect = canvas.getBoundingClientRect();
 	x = e.clientX - rect.left;
 	y = e.clientY - rect.top;
@@ -57,16 +57,20 @@ canvas.addEventListener("mousedown", function(e) {
 			break;
 		}
 	}
-});
+}
+canvas.addEventListener("mousedown", onMouseDown);
+canvas.addEventListener("touchstart", onMouseDown);
 
-canvas.addEventListener("mouseup", function(e) {
+var onMouseUp = function(e) {
 	if(selectedMagnet != undefined) {
 		console.log(selectedMagnet.id + " released!");
 		selectedMagnet = undefined;
 	}
-});
+}
+canvas.addEventListener("touchend", onMouseUp);
+canvas.addEventListener("mouseup", onMouseUp);
 
-canvas.addEventListener("mousemove", function(e) {
+var onMouseMove = function(e) {
 	var rect = canvas.getBoundingClientRect();
 	x = e.clientX - rect.left;
 	y = e.clientY - rect.top;
@@ -76,4 +80,6 @@ canvas.addEventListener("mousemove", function(e) {
 		selectedMagnet.point.y = y;
 		redraw();
 	}	
-});
+}
+canvas.addEventListener("mousemove", onMouseMove);
+canvas.addEventListener("touchmove", onMouseMove);
