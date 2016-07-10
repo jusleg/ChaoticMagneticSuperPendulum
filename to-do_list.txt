@@ -1,8 +1,6 @@
 EASY:------------
-Remove the debug button
 Functionality "add magnet" button
 Make the frame rate slider effective
-Implement fixed length for pendulum string (can't go over certain radius)
 Make default value of magnet strength = 15*1e5
 
 
