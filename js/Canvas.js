@@ -9,6 +9,12 @@ function redraw() {
 		map[i].draw(ctx);
 	}
 
+	// Draw line
+	ctx.beginPath();
+	ctx.moveTo(canvasCenterX,canvasCenterY);
+	ctx.lineTo(pendulum.point.x,pendulum.point.y);
+	ctx.stroke();
+
 	// Draw parts
 	for(var i=0; i < parts.length; i++) {
 		parts[i].draw(ctx);
