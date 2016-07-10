@@ -4,7 +4,7 @@
 
 // Create canvas
 var canvas = document.getElementById("canvas");
-canvas.height = 900;
+canvas.height = 800;
 canvas.style.width="80%";
 canvas.width = canvas.height;
 
