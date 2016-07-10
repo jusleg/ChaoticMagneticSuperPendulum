@@ -2,6 +2,7 @@ function add(loc1, loc2, val1, val2) {
 	return new Location(loc1.x*val1 + loc2.x*val2, loc1.y*val1 + loc2.y*val2);
 }
 
+var halt = false;
 function simulateStep(){
     var done = false;
 	// Save space
@@ -33,6 +34,23 @@ function simulateStep(){
 		var r = Math.sqrt(Math.pow(position.x - magnet.point.x ,2) + Math.pow(position.y - magnet.point.y ,2) );
 		//console.log("r: " + r);
 		var d = Math.sqrt(Math.pow(h,2)+Math.pow(r,2));	// Distance between pendulum and n-th magnet
+
+		if(halt) {
+			halt = false;
+			return;
+		}
+		
+		var thresh = 2000;
+		if(d < 10) {
+			console.log("Close!");
+			if(Math.sqrt(Math.pow(velocity.x,2) + Math.pow(velocity.y,2)) < thresh)	{
+				console.log("Stop!");
+				position.x = magnet.point.x;
+				position.y = magnet.point.y;
+				halt = true;
+			}
+		}
+
 		//console.log("d: " + d);
 	
 		// Sum contribution of all magnets into the total force (2D vector addition)
@@ -44,13 +62,7 @@ function simulateStep(){
 	acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / mass;
 	velocity.x += acceleration.x *DELTA_T;
 	velocity.y += acceleration.y *DELTA_T;
-    if(acceleration.y>5e5||acceleration.x>5e5){
-                              //velocity.y=0;
-                              //velocity.x=0;
-                              //acceleration.x=0;
-                              //acceleration.y=0;
-                
-                             };
+
 	//console.log("Velocity: " + velocity.toString());
 
 	position.x += velocity.x*DELTA_T + 0.5*acceleration.x*Math.pow(DELTA_T,2);

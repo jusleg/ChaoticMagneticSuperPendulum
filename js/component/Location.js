@@ -5,3 +5,7 @@ function Location(x, y) {
 }
 
 Location.inherits(Item);
+
+Location.method(function toString() {
+	return this.x + " : " + this.y;
+});
