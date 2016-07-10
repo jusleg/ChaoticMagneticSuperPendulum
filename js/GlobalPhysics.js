@@ -25,6 +25,7 @@ function updateValues() {
 		console.log(magnets[i].toString());
 	}	
 	pendulum.strength = document.getElementById("sliderStrength").value/10*1e6;
+	pendulum.height = document.getElementById("sliderHeight").value/10; 
 	console.log(pendulum.toString());
 	console.log("-----------------------------------");
 }
