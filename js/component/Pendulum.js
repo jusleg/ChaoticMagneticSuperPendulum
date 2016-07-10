@@ -10,9 +10,9 @@ Pendulum.inherits(Magnet);
 
 Pendulum.method(function draw() {
 	if(this.polarity == 1) {
-		this.color = 'cyan';
-	} else {
 		this.color = 'pink';
+	} else {
+		this.color = 'cyan';
 	}
 	ctx.beginPath();
 	ctx.arc(this.point.x,this.point.y,this.radius,0,2*Math.PI);
