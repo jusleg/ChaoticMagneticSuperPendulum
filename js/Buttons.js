@@ -12,3 +12,9 @@ switchPolar.addEventListener("click", function() {
 	pendulum.togglePolarity();
 	redraw();
 });
+
+resetBtn = document.getElementById("reset");
+resetBtn.addEventListener("click", function() {
+	pendulum.flushTrace();
+	redraw();
+});

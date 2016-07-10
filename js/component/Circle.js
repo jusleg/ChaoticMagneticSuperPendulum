@@ -8,6 +8,7 @@ Circle.inherits(Item);
 
 Circle.method(function draw(ctx){
 	ctx.beginPath();
+	ctx.strokeStyle = 'lightgray';
 	ctx.arc(this.point.x,this.point.y,this.radius,0,2*Math.PI);
 	ctx.stroke();
 });

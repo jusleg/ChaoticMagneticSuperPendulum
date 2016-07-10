@@ -11,9 +11,12 @@ function redraw() {
 
 	// Draw line
 	ctx.beginPath();
+	ctx.lineWidth=4;
 	ctx.moveTo(canvasCenterX,canvasCenterY);
 	ctx.lineTo(pendulum.point.x,pendulum.point.y);
+	ctx.strokeStyle = 'black';
 	ctx.stroke();
+	ctx.lineWidth=1;
 
 	// Draw parts
 	for(var i=0; i < parts.length; i++) {
