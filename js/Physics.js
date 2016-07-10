@@ -2,7 +2,9 @@ function add(loc1, loc2, val1, val2) {
 	return new Location(loc1.x*val1 + loc2.x*val2, loc1.y*val1 + loc2.y*val2);
 }
 
-function mag_force
+function mag_force() {
+	
+}
 
 function simulateStep(){
 
