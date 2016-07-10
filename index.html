@@ -61,13 +61,13 @@
                           <p>Height of pendulum: <span id="pendulumHeight">0.01</span> m</p>
                           <input type="range" id="sliderHeight" min="0" max="100" value="1"/>
                           <br>
-                          <button type="button" id="buttonMagPos" class="btn btn-danger col-xs-12">Add North Magnet</button>
+                          <button type="button" id="addNorth" class="btn btn-danger col-xs-12">Add North Magnet</button>
                           <br><br>
-                          <button type="button" id="buttonMagPos" class="btn btn-primary col-xs-12">Add South Magnet</button>
+                          <button type="button" id="addSouth" class="btn btn-primary col-xs-12">Add South Magnet</button>
                           <br><br>
-                          <button type="button" id="buttonMagPos" class="btn btn-success col-xs-12">Switch Pendulum Polarity</button>
+                          <button type="button" id="switchPolar" class="btn btn-success col-xs-12">Switch Pendulum Polarity</button>
                           <br><br>
-                          <button type="button" class="btn btn-warning col-xs-12">Start</button>
+                          <button type="button" id="start" class="btn btn-warning col-xs-12">Start</button>
                       </div>
                     </div>
                 </div>
@@ -109,6 +109,8 @@
             </div>
         </div>
         <script src="js/main.js"></script>
+        <script src="js/Physics.js"></script>
+        <script src="js/Buttons.js"></script>
         <script src="js/Canvas.js"></script>
     </body>
 </html>

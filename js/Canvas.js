@@ -2,7 +2,7 @@
 var selectedMagnet = undefined;
 var ctx = canvas.getContext("2d");
 
-function updateCanvas() {
+function redraw() {
 	ctx.clearRect(0,0,canvas.width, canvas.height);
 	// Draw on canvas
 	for(var i=0; i < map.length; i++) {
@@ -16,7 +16,7 @@ function updateCanvas() {
 }
 
 // Call update by default
-updateCanvas();
+redraw();
 
 // Check for canvas magnet
 canvas.addEventListener("mousedown", function(e) {
@@ -48,6 +48,6 @@ canvas.addEventListener("mousemove", function(e) {
 	if(selectedMagnet != undefined) {
 		selectedMagnet.point.x = x;
 		selectedMagnet.point.y = y;
-		updateCanvas();
+		redraw();
 	}	
 });
