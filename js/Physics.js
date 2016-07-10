@@ -3,7 +3,7 @@ function add(loc1, loc2, val1, val2) {
 }
 
 function simulateStep(){
-
+    var done = false;
 	// Save space
 	var position = pendulum.point;
 	var velocity = pendulum.velocity;
@@ -45,10 +45,11 @@ function simulateStep(){
 	velocity.x += acceleration.x *DELTA_T;
 	velocity.y += acceleration.y *DELTA_T;
     if(acceleration.y>5e5||acceleration.x>5e5){
-                              velocity.y=0;
-                              velocity.x=0;
-                              acceleration.x=0;
-                              acceleration.y=0;
+                              //velocity.y=0;
+                              //velocity.x=0;
+                              //acceleration.x=0;
+                              //acceleration.y=0;
+                
                              };
 	//console.log("Velocity: " + velocity.toString());
 
