@@ -3,7 +3,7 @@ $( document ).ready(function() {
         $("#pendulumMass").html($("#sliderMass").val()/100.0);
     });
     $('#sliderStrength').on("change mousemove", function() {
-        $("#magnetStrength").html($("#sliderStrength").val()/10.0);
+        $("#magnetStrength").html($("#sliderStrength").val()/10.0*1e5);
     });
     $('#sliderFriction').on("change mousemove", function() {
         $("#friction").html($("#sliderFriction").val()/10.0);

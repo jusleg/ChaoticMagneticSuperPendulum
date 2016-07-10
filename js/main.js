@@ -20,7 +20,7 @@ for(var i=1; i <= 5; i++) {
 // Create Parts (Magnet and Pendulum)
 parts = [];
 magnets = [];
-var totalMagnets = 3;
+var totalMagnets = 5;
 var virtualRadius = 150;
 for(var i=1; i <= totalMagnets; i++) {
 	magnet = new Magnet("magnet" + i, -1/*x*/,-1/*y*/,1/*polarity*/,-1/*strength*/);
