@@ -33,11 +33,14 @@ function addMagnet(x, y) {
 }
 
 // Add magnets
-for(var i=1; i <= totalMagnets; i++) {
-	var x = canvasCenterX - virtualRadius * Math.sin((2*PI*i)/totalMagnets);
-	var y = canvasCenterY - virtualRadius * Math.cos((2*PI*i)/totalMagnets);
-	addMagnet(x,y);
+function initMagnets() {
+	for(var i=1; i <= totalMagnets; i++) {
+		var x = canvasCenterX - virtualRadius * Math.sin((2*PI*i)/totalMagnets);
+		var y = canvasCenterY - virtualRadius * Math.cos((2*PI*i)/totalMagnets);
+		addMagnet(x,y);
+	}
 }
+initMagnets();
 
 // Add pendulum
 pendulum = new Pendulum("pendulum", canvas.width*0.9, canvas.height*0.9, 1/*polarity*/, 0/*vx*/, 0/*vy*/, 0/*ax*/, 0/*ay*/, 1/*mass*/, 0.1/*height*/, -1/*strength*/);
