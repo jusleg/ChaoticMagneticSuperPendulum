@@ -11,3 +11,4 @@ Create new simulateStep() that uses the Runga-Kutta method
 Add a button that adds a second pendulum (pendulums don't interact with each other), see effect of chaos theory
 Allow to remove magnets
 Find conditions to declare pendulum has stopped over a magnet (low velocity and over magnet)
+Buy the $15 magnetic pendulum at Indigo
