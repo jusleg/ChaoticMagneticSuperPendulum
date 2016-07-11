@@ -1,4 +1,5 @@
-
+EASY:--------
+Make threshold value for pendulum capture by a magnet equal to 1500
 
 
 NEEDS MORE WORK:--------
