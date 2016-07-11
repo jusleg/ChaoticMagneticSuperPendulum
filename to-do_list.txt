@@ -3,11 +3,7 @@ Make threshold value for pendulum capture by a magnet equal to 1500
 Make string of pendulum drawn over pendulum circle, to mimick top view of pendulum
 
 NEEDS MORE WORK:--------
-Add a "Pause" button
+Add Slider that determines number of magnets in the field
 Add a button that adds a second pendulum (pendulums don't interact with each other), see effect of chaos theory
 Allow to remove magnets
-Buy the $15 magnetic pendulum at Indigo
-
-SKIPPED------------
 Make magnet movement and polarity double-click compatible with mobile
-Add Slider that determines magnets in the field
