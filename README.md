@@ -1,6 +1,7 @@
 # Chaotic Magnetic Super Pendulum
 
 ![animation pendulum](animation.gif)
+
 try a live version [here](http://is.gd/McPhysics)
 
 Physicists have always been fascinated by pendulums, and with good reason. They are very simple systems that can be easily understood, yet still have applications in almost all fields of physics. While they might be nothing more than a mass at the end of a string, modeling their movement has been used to solve many problems, from keeping time inside clocks to understanding quantum mechanics!
