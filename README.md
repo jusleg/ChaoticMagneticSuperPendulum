@@ -9,3 +9,14 @@ This all changes, however, when a magnet is applied at the end of such pendulums
 
 This simulation features the physics behind a magnetic pendulum. Notice how modifying any setting or initial magnet location (even slightly) might result in changing the magnet over which the pendulum might end in an unpredictable manner. This is the butterfly effect! Try adding other magnets and changing the polarities to simulate the interesting motions of the pendulum.
 
+## Made by:
+* [Amir Bawab](https://ca.linkedin.com/in/amirbawab)
+* [Félix Léger](https://ca.linkedin.com/in/felleg)
+* [Justin Léger](https://ca.linkedin.com/in/legerjustin)
+
+## Future improvements:
+* Add Slider that determines number of magnets in the field
+* Add a button that adds a second pendulum (pendulums don't interact with each other), see effect of chaos theory
+* Allow to remove magnets
+* Make magnet movement and polarity double-click compatible with mobile
+
