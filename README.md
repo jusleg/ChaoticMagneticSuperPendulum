@@ -1,4 +1,11 @@
 # Chaotic Magnetic Super Pendulum
-Because non chaotic is too mainstream
 
-![super cool gif](http://sprott.physics.wisc.edu/fractals/animated/sprotta.gif)
+![animation pendulum](animation.gif)
+try a live version [here](http://is.gd/McPhysics)
+
+Physicists have always been fascinated by pendulums, and with good reason. They are very simple systems that can be easily understood, yet still have applications in almost all fields of physics. While they might be nothing more than a mass at the end of a string, modeling their movement has been used to solve many problems, from keeping time inside clocks to understanding quantum mechanics!
+
+This all changes, however, when a magnet is applied at the end of such pendulums. Indeed, this transforms an object that is otherwise completely understood into a concrete example of the butterfly effect. This effect can be summarized as "small causes can have large consequences". This idea ties into a much broader and complex concept of mathematics: chaos theory.
+
+This simulation features the physics behind a magnetic pendulum. Notice how modifying any setting or initial magnet location (even slightly) might result in changing the magnet over which the pendulum might end in an unpredictable manner. This is the butterfly effect! Try adding other magnets and changing the polarities to simulate the interesting motions of the pendulum.
+
