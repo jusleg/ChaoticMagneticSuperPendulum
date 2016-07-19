@@ -12,10 +12,10 @@ function Item(id){
 
     // Mandatory variables
 	this.id = id;
-    if(items[this.id] != undefined)
-        alert("Duplicated id: " + this.id);
-    else
-	   items[this.id] = this;
+   // if(items[this.id] != undefined)
+   //     alert("Duplicated id: " + this.id);
+   // else
+   //	   items[this.id] = this;
 }
 
 /**

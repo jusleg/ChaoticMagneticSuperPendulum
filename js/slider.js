@@ -16,6 +16,8 @@ $( document ).ready(function() {
     });
     $('#sliderMagnets').on("change mousemove", function() {
         $("#initialMagnets").html($("#sliderMagnets").val());
+	initMagnets($("#sliderMagnets").val());
+	redraw();
     });
 });
 
