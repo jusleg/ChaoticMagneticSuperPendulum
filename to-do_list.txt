@@ -4,6 +4,7 @@ Make string of pendulum drawn over pendulum circle, to mimick top view of pendul
 
 NEEDS MORE WORK:--------
 Add Slider that determines number of magnets in the field
+Unify the Start and Pause/Resume buttons
 Add a button that adds a second pendulum (pendulums don't interact with each other), see effect of chaos theory
 Allow to remove magnets
 Make magnet movement and polarity double-click compatible with mobile
