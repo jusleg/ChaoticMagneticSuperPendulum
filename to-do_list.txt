@@ -1,5 +1,4 @@
 EASY:--------
-Make threshold value for pendulum capture by a magnet equal to 1500
 Make string of pendulum drawn over pendulum circle, to mimick top view of pendulum
 
 NEEDS MORE WORK:--------
