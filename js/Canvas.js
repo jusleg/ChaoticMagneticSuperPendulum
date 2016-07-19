@@ -12,6 +12,14 @@ function redraw() {
 	// Draw trace
 	pendulum.drawTrace();
 
+	// Draw parts
+	for(var i=0; i < magnets.length; i++) {
+		magnets[i].draw(ctx);
+	}
+
+	// Draw pendulum
+	pendulum.draw(ctx);
+
 	// Draw center line
 	ctx.beginPath();
 	ctx.lineWidth=4;
@@ -20,11 +28,6 @@ function redraw() {
 	ctx.strokeStyle = 'black';
 	ctx.stroke();
 	ctx.lineWidth=1;
-
-	// Draw parts
-	for(var i=0; i < parts.length; i++) {
-		parts[i].draw(ctx);
-	}
 }
 
 // Call update by default
