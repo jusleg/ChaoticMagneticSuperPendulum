@@ -42,9 +42,11 @@ function simulateStep(){
 		var thresh = 1500;
 		if(d < 10) {
 			if(Math.sqrt(Math.pow(velocity.x,2) + Math.pow(velocity.y,2)) < thresh)	{
-				position.x = magnet.point.x;
-				position.y = magnet.point.y;
-				halt = true;
+      	if(pendulum.polarity * magnet.polarity == -1) {
+					position.x = magnet.point.x;
+					position.y = magnet.point.y;
+					halt = true;
+        }
 			}
 		}
 
@@ -69,3 +71,4 @@ function simulateStep(){
 	//console.log("t: " + t);
 	//console.log("-------------------------------------------------");
 }
+
