@@ -1,5 +1,3 @@
-EASY:--------
-Make string of pendulum drawn over pendulum circle, to mimick top view of pendulum
 
 NEEDS MORE WORK:--------
 Add Slider that determines number of magnets in the field
