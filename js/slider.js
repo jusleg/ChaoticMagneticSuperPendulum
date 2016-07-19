@@ -1,17 +1,17 @@
 $( document ).ready(function() {
-    $('#sliderMass').on("change", function() {
+    $('#sliderMass').on("change mousemove", function() {
         $("#pendulumMass").html($("#sliderMass").val()/100.0);
     });
-    $('#sliderStrength').on("change", function() {
+    $('#sliderStrength').on("change mousemove", function() {
         $("#magnetStrength").html($("#sliderStrength").val()/10.0*1e5);
     });
-    $('#sliderFriction').on("change", function() {
+    $('#sliderFriction').on("change mousemove", function() {
         $("#friction").html($("#sliderFriction").val()/10.0);
     });
-    $('#sliderGravity').on("change", function() {
+    $('#sliderGravity').on("change mousemove", function() {
         $("#gravity").html($("#sliderGravity").val()/10.0);
     });
-    $('#sliderHeight').on("change", function() {
+    $('#sliderHeight').on("change mousemove", function() {
         $("#pendulumHeight").html($("#sliderHeight").val()/100.0);
     });
     $('#sliderMagnets').on("change", function() {
