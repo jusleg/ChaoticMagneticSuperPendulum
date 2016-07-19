@@ -14,5 +14,8 @@ $( document ).ready(function() {
     $('#sliderHeight').on("change mousemove", function() {
         $("#pendulumHeight").html($("#sliderHeight").val()/100.0);
     });
+    $('#sliderMagnets').on("change mousemove", function() {
+        $("#initialMagnets").html($("#sliderMagnets").val());
+    });
 });
 
