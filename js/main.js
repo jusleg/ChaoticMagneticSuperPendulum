@@ -28,6 +28,9 @@ parts = [];
 magnets = [];
 var virtualRadius = map[2].radius;
 
+// Add pendulum
+pendulum = new Pendulum("pendulum", canvas.width*0.9, canvas.height*0.9, 1/*polarity*/, 0/*vx*/, 0/*vy*/, 0/*ax*/, 0/*ay*/, 1/*mass*/, 0.1/*height*/, -1/*strength*/);
+
 function addMagnet(x, y) {
 	magnet = new Magnet("magnet" + magnets.length, x, y,1/*polarity*/,-1/*strength*/);
 	parts.push(magnet);
@@ -43,9 +46,8 @@ function initMagnets(totalMagnets) {
 		var y = canvasCenterY - virtualRadius * Math.cos((2*PI*i)/totalMagnets);
 		addMagnet(x,y);
 	}
+	parts.push(pendulum);
 }
-initMagnets(5);
 
-// Add pendulum
-pendulum = new Pendulum("pendulum", canvas.width*0.9, canvas.height*0.9, 1/*polarity*/, 0/*vx*/, 0/*vy*/, 0/*ax*/, 0/*ay*/, 1/*mass*/, 0.1/*height*/, -1/*strength*/);
-parts.push(pendulum);
+// Create magnets
+initMagnets(5);
