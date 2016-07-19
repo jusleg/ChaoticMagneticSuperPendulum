@@ -21,9 +21,9 @@ Pendulum.method(function draw() {
 	}
 
 	if(this.polarity == 1) {
-		this.color = 'pink';
+		this.color = 'red';
 	} else {
-		this.color = 'cyan';
+		this.color = 'blue';
 	}
 
 		
