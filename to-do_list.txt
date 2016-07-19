@@ -7,3 +7,4 @@ Unify the Start and Pause/Resume buttons
 Add a button that adds a second pendulum (pendulums don't interact with each other), see effect of chaos theory
 Allow to remove magnets
 Make magnet movement and polarity double-click compatible with mobile
+2 canvases for things that move and don't move (don't redraw everything)
