@@ -4,6 +4,7 @@ body{
 
 #canvas{
     border: 1px solid #111;
+    width: 80%;
 }
 #buttonMagPos{
     margin-right: 10px;
