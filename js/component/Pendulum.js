@@ -7,7 +7,7 @@ function Pendulum(x, y, polarity, magnets, stringColor, traceColor) {
 	this.mass = 0;
 	this.height = 0;
 	this.trace = [];
-	this.traceEvery = 20;
+	this.traceEvery = 10;
 	this.traceNow = 0;
 	this.enableTrace = true;
 	this.physics = new Physics(this, magnets);
@@ -17,6 +17,7 @@ function Pendulum(x, y, polarity, magnets, stringColor, traceColor) {
 Pendulum.inherits(Magnet);
 
 Pendulum.method(function draw(ctx) {
+
 	// Store old position
 	if(++this.traceNow == this.traceEvery && this.enableTrace) {
 		this.trace.push(new Location(this.point.x, this.point.y));

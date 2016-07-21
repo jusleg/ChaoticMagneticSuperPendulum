@@ -5,4 +5,4 @@
 var canvas = new Canvas(document.getElementById("canvas"));
 
 // Initial draw
-canvas.redraw();
+window.requestAnimationFrame(canvas.redraw());

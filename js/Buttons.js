@@ -33,15 +33,13 @@ startBtn.addEventListener("click", function() {
 			canvas.pendulums[i].enableTrace = true;
 		}
 
-		// Start the simulation
-		setInterval(function() {
+		window.setInterval(function() {
 			if(!canvas.pause) {
 				for(var i=0; i < canvas.pendulums.length; i++) {
 					canvas.pendulums[i].physics.simulateStep();
-					canvas.redraw();
 				}
 			}
-		}, 1);	
+		}, 1);
 	}
 });
 
@@ -50,7 +48,6 @@ switchPolar.addEventListener("click", function() {
 	for(var i=0; i < canvas.pendulums.length; i++) {
 		canvas.pendulums[i].togglePolarity();
 	}
-	canvas.redraw();
 });
 
 resetBtn = document.getElementById("reset");
@@ -58,13 +55,11 @@ resetBtn.addEventListener("click", function() {
 	for(var i=0; i < canvas.pendulums.length; i++) {
 		canvas.pendulums[i].flushTrace();
 	}
-	canvas.redraw();
 });
 
 addNorth = document.getElementById("addNorth");
 addNorth.addEventListener("click", function() {
 	canvas.addMagnet(canvas.domObj.width*0.1, canvas.domObj.height*0.1);	
-	canvas.redraw();
 });
 
 pauseBtn = document.getElementById("pause");

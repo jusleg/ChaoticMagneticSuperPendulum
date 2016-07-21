@@ -33,29 +33,34 @@ function Canvas(domObj) {
 Canvas.inherits(Item);
 
 Canvas.method(function redraw() {
-	
-	// Clear canvas
-	this.ctx.clearRect(0,0,this.domObj.width, this.domObj.height);
-	
-	// Draw circles
-	for(var i=0; i < this.circles.length; i++) {
-		this.circles[i].draw(this.ctx);
-	}
+	var that = this;
 
-	// Draw trace
-	for(var i=0; i < this.pendulums.length; i++) {
-		this.pendulums[i].drawTrace(this.ctx);
-	}
+	return function() {
+		// Clear canvas
+		that.ctx.clearRect(0,0,that.domObj.width, that.domObj.height);
+		
+		// Draw circles
+		for(var i=0; i < that.circles.length; i++) {
+			that.circles[i].draw(that.ctx);
+		}
 
-	// Draw magnets
-	for(var i=0; i < this.magnets.length; i++) {
-		this.magnets[i].draw(this.ctx);
-	}
+		// Draw trace
+		for(var i=0; i < that.pendulums.length; i++) {
+			that.pendulums[i].drawTrace(that.ctx);
+		}
 
-	// Draw pendulums
-	for(var i=0; i < this.pendulums.length; i++) {
-		this.pendulums[i].draw(this.ctx);
-		this.pendulums[i].drawString(this.ctx, this.centerX, this.centerY);
+		// Draw magnets
+		for(var i=0; i < that.magnets.length; i++) {
+			that.magnets[i].draw(that.ctx);
+		}
+
+		// Draw pendulums
+		for(var i=0; i < that.pendulums.length; i++) {
+			that.pendulums[i].draw(that.ctx);
+			that.pendulums[i].drawString(that.ctx, that.centerX, that.centerY);
+		}
+
+		window.requestAnimationFrame(that.redraw());
 	}
 });
 
@@ -97,7 +102,6 @@ Canvas.method(function initListeners() {
 				break;
 			}
 		}
-		that.redraw();
 	});
 
 	this.domObj.addEventListener("mousedown", function(e) {
@@ -124,7 +128,6 @@ Canvas.method(function initListeners() {
 		if(that.selectedItem != undefined) {
 			that.selectedItem.point.x = point.x;
 			that.selectedItem.point.y = point.y;
-			that.redraw();
 		}
 	});
 });
