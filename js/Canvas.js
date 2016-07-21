@@ -75,7 +75,7 @@ Canvas.method(function addMagnet(x,y) {
 Canvas.method(function initPendulums() {
 	this.pendulums = [];
 	this.pendulums.push(new Pendulum(this.domObj.width*0.9, this.domObj.height*0.9, this.defaultPolarity, this.magnets, '#962D3E', '#962D3E'));
-	this.pendulums.push(new Pendulum(this.domObj.width*0.1, this.domObj.height*0.1, this.defaultPolarity, this.magnets, '#348899', '#348899'));
+	this.pendulums.push(new Pendulum(this.domObj.width*0.1, this.domObj.height*0.9, this.defaultPolarity, this.magnets, '#348899', '#348899'));
 });
 
 Canvas.method(function initCircles() {
