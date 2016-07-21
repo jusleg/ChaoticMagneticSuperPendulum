@@ -9,7 +9,7 @@ function Pendulum(x, y, polarity, magnets, stringColor, traceColor) {
 	this.trace = [];
 	this.traceEvery = 10;
 	this.traceNow = 0;
-	this.enableTrace = true;
+	this.enableTrace = false;
 	this.physics = new Physics(this, magnets);
 	this.freeze = false;
 }
@@ -19,7 +19,7 @@ Pendulum.inherits(Magnet);
 Pendulum.method(function draw(ctx) {
 
 	// Store old position
-	if(++this.traceNow == this.traceEvery && this.enableTrace) {
+	if(this.enableTrace && ++this.traceNow == this.traceEvery) {
 		this.trace.push(new Location(this.point.x, this.point.y));
 		this.traceNow = 0;
 	}
