@@ -6,7 +6,6 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <!--jQuery Import -->
         <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-        <script src="js/slider.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <title>Super Pendulum</title>
@@ -49,8 +48,8 @@
                         <h3 class="panel-title">Parameters</h3>
                       </div>
                       <div class="panel-body">
-                          <p>Mass of pendulum: <span id="pendulumMass">1</span> kg</p>
-                          <input type="range" id="sliderMass" min="1" max="200" value="100"/>
+                          <p>Mass of pendulum: <span id="pendulumMass">0.01</span> kg</p>
+                          <input type="range" id="sliderMass" min="1" max="200" value="1"/>
                           <br>
                           <p>Magnet strength: <span id="magnetStrength">1000000</span> A/m</p>
                           <input type="range" id="sliderStrength" min="0" max="1000" value="100"/>
@@ -152,10 +151,10 @@
                 </div>
             </div>
         </div>
-        <script src="js/main.js"></script>
-        <script src="js/GlobalPhysics.js"></script>
         <script src="js/Physics.js"></script>
-        <script src="js/Buttons.js"></script>
         <script src="js/Canvas.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/Buttons.js"></script>
+        <script src="js/Slider.js"></script>
     </body>
 </html>

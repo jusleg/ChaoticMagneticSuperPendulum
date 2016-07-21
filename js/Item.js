@@ -1,22 +1,8 @@
-// Items which will store all the components in the dom
-items = {};
-
 /**
  * Root class. 
  * All other classes should inherit this class, or inherit a descendant of it.
  */
-function Item(id){
-    // Ignore on undefined caused by uber
-    if(id == undefined)
-        return;
-
-    // Mandatory variables
-	this.id = id;
-   // if(items[this.id] != undefined)
-   //     alert("Duplicated id: " + this.id);
-   // else
-   //	   items[this.id] = this;
-}
+function Item(){}
 
 /**
  * Use method() to add function
@@ -58,13 +44,6 @@ Function.method(function inherits(parent) {
     });
     return this;
 });
-
-/** 
- * Get item from the global object `items`
- */
-function getItem(id) {
-	return items[id];
-}
 
 /**
  * To be implemented by the children classes

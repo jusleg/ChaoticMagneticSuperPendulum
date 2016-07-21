@@ -1,7 +1,7 @@
-function Magnet(id, x, y, polarity, strength) {
-	Circle.call(this, id, x, y, 10);
+function Magnet(x, y, polarity) {
+	Circle.call(this, x, y, 10);
 	this.polarity = polarity;
-	this.strength = strength;
+	this.strength = 0;
 }
 
 Magnet.inherits(Circle);
@@ -21,7 +21,7 @@ Magnet.method(function draw(ctx) {
 });
 
 Magnet.method(function toString(){
-	return "Magnet: " + this.id + ", Polarity: " + this.polarity + ", Strength: " + this.strength;
+	return "Magnet: Polarity: " + this.polarity + ", Strength: " + this.strength;
 });
 
 Magnet.method(function togglePolarity() {

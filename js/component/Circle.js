@@ -1,5 +1,5 @@
-function Circle(id, x, y, radius) {
-	Item.call(this, id);
+function Circle(x, y, radius) {
+	Item.call(this);
 	this.point = new Location(x, y);
 	this.radius = radius;
 }

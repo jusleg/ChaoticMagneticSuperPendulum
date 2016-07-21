@@ -1,74 +1,56 @@
-function add(loc1, loc2, val1, val2) {
-	return new Location(loc1.x*val1 + loc2.x*val2, loc1.y*val1 + loc2.y*val2);
+function Physics(pendulum, magnets) {
+	Item.call(this);
+	this.k_h=0;
+	this.k_f=0;
+	this.t=0;
+	this.pendulum = pendulum;
+	this.magnets = magnets;
 }
 
-var halt = false;
-function simulateStep(){
-	// Save space
-	var position = pendulum.point;
-	var velocity = pendulum.velocity;
-	var acceleration = pendulum.acceleration;
-	var h = pendulum.height;
-	var polarity = pendulum.polarity;
-	var strengthMagnets = pendulum.strength;
-	var mass = pendulum.mass;
-
-	//console.log("----------------- Simulate Step -----------------");
-	//console.log(pendulum.toString());
+Physics.method(function simulateStep(){
 
 	//Gravity
-	F_grav = new Location(-k_h*(position.x-canvasCenterX),-k_h*(position.y-canvasCenterY));
-	//console.log("F_grav: " + F_grav.toString());	
+	var F_grav = new Location(-this.k_h*(this.pendulum.point.x-canvas.centerX),-this.k_h*(this.pendulum.point.y-canvas.centerY));
 
 	// Friction
-	F_fric = new Location(-k_f*velocity.x, -k_f*velocity.y);
-	//console.log("F_fric: " + F_fric.toString());
+	var F_fric = new Location(-this.k_f*this.pendulum.velocity.x, -this.k_f*this.pendulum.velocity.y);
 
 	// Magnetic force
-	F_m_tot = new Location(0,0);
-	for (var i=0; i < magnets.length; i++){
-		var magnet = magnets[i];
-		//console.log(magnet.toString());
+	var F_m_tot = new Location(0,0);
+	for (var i=0; i < this.magnets.length; i++){
+		var magnet = this.magnets[i];
 	
-		var r = Math.sqrt(Math.pow(position.x - magnet.point.x ,2) + Math.pow(position.y - magnet.point.y ,2) );
-		//console.log("r: " + r);
-		var d = Math.sqrt(Math.pow(h,2)+Math.pow(r,2));	// Distance between pendulum and n-th magnet
+		var r = Math.sqrt(Math.pow(this.pendulum.point.x - magnet.point.x ,2) + Math.pow(this.pendulum.point.y - magnet.point.y ,2) );
+		var d = Math.sqrt(Math.pow(this.pendulum.height,2)+Math.pow(r,2));	// Distance between pendulum and n-th magnet
 
-		if(halt) {
-			halt = false;
+		if(this.pendulum.freeze) {
+			this.pendulum.freeze = false;
 			return;
 		}
 		
 		var thresh = 1500;
 		if(d < 10) {
-			if(Math.sqrt(Math.pow(velocity.x,2) + Math.pow(velocity.y,2)) < thresh)	{
-				if(pendulum.polarity * magnet.polarity == -1) {
-					position.x = magnet.point.x;
-					position.y = magnet.point.y;
-					halt = true;
+			if(Math.sqrt(Math.pow(this.pendulum.velocity.x,2) + Math.pow(this.pendulum.velocity.y,2)) < thresh)	{
+				if(this.pendulum.polarity * magnet.polarity == -1) {
+					this.pendulum.point.x = magnet.point.x;
+					this.pendulum.point.y = magnet.point.y;
+					this.pendulum.freeze = true;
 				}
 			}
 		}
 
-		//console.log("d: " + d);
-	
 		// Sum contribution of all magnets into the total force (2D vector addition)
-		F_m_tot.x += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) * (position.x - magnet.point.x); 
-		F_m_tot.y += MU * polarity * magnet.polarity * Math.pow(strengthMagnets,2) / (4 * PI * Math.pow(d,3)) * (position.y - magnet.point.y);
-		//console.log("F_m_tot: " + F_m_tot.toString());
+		F_m_tot.x += MU * this.pendulum.polarity * magnet.polarity * Math.pow(this.pendulum.strength,2) / (4 * PI * Math.pow(d,3)) * (this.pendulum.point.x - magnet.point.x); 
+		F_m_tot.y += MU * this.pendulum.polarity * magnet.polarity * Math.pow(this.pendulum.strength,2) / (4 * PI * Math.pow(d,3)) * (this.pendulum.point.y - magnet.point.y);
 	}
-	acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / mass;
-	acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / mass;
-	velocity.x += acceleration.x *DELTA_T;
-	velocity.y += acceleration.y *DELTA_T;
-	//console.log("Velocity: " + velocity.toString());
+	this.pendulum.acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / this.pendulum.mass;
+	this.pendulum.acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / this.pendulum.mass;
+	this.pendulum.velocity.x += this.pendulum.acceleration.x *DELTA_T;
+	this.pendulum.velocity.y += this.pendulum.acceleration.y *DELTA_T;
 
-	position.x += velocity.x*DELTA_T + 0.5*acceleration.x*Math.pow(DELTA_T,2);
-	position.y += velocity.y*DELTA_T + 0.5*acceleration.y*Math.pow(DELTA_T,2);
-	//console.log("Position: " + position.toString());
+	this.pendulum.point.x += this.pendulum.velocity.x*DELTA_T + 0.5*this.pendulum.acceleration.x*Math.pow(DELTA_T,2);
+	this.pendulum.point.y += this.pendulum.velocity.y*DELTA_T + 0.5*this.pendulum.acceleration.y*Math.pow(DELTA_T,2);
 
-	t+=DELTA_T;	// Go forward in time by one step
-	//console.log("t: " + t);
-	//console.log("-------------------------------------------------");
-}
+	this.t+=DELTA_T;	// Go forward in time by one step
+});
 

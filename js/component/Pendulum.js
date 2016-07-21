@@ -1,19 +1,22 @@
-function Pendulum(id, x, y, polarity, vx, vy, ax, ay, mass, height, strength) {
-	Magnet.call(this, id, x, y, polarity, strength);
-	this.velocity = new Location(vx, vy);;
-	this.acceleration = new Location(ax, ay);
-	this.mass = mass;
-	this.height = height;
+function Pendulum(x, y, polarity, magnets, stringColor, traceColor) {
+	Magnet.call(this, x, y, polarity);
+	this.stringColor = stringColor;
+	this.traceColor = traceColor;
+	this.velocity = new Location(0, 0);;
+	this.acceleration = new Location(0, 0);
+	this.mass = 0;
+	this.height = 0;
 	this.trace = [];
 	this.traceEvery = 20;
 	this.traceNow = 0;
 	this.enableTrace = true;
+	this.physics = new Physics(this, magnets);
+	this.freeze = false;
 }
 
 Pendulum.inherits(Magnet);
 
-Pendulum.method(function draw() {
-
+Pendulum.method(function draw(ctx) {
 	// Store old position
 	if(++this.traceNow == this.traceEvery && this.enableTrace) {
 		this.trace.push(new Location(this.point.x, this.point.y));
@@ -34,23 +37,31 @@ Pendulum.method(function draw() {
 	ctx.strokeStyle = 'black';
 	ctx.fill();
 	ctx.stroke();
-
-	
-	
 });
 
-Pendulum.method(function drawTrace() {
+Pendulum.method(function drawString(ctx, centerX, centerY) {
+	// Draw pendulum string
+	ctx.beginPath();
+	ctx.lineWidth=4;
+	ctx.moveTo(centerX, centerY);
+	ctx.lineTo(this.point.x, this.point.y);
+	ctx.strokeStyle = this.stringColor;
+	ctx.stroke();
+	ctx.lineWidth=1;
+});
+
+Pendulum.method(function drawTrace(ctx) {
 	// Draw trace
 	ctx.beginPath();
 	for(var i=0; i < this.trace.length; i++) {
-		ctx.strokeStyle = 'orange';
+		ctx.strokeStyle = this.traceColor;
 		ctx.arc(this.trace[i].x, this.trace[i].y, 0.01, 0, 2 * Math.PI, true);
 	}
 	ctx.stroke();
 });
 
 Pendulum.method(function toString(){
-	return "Pendulum: " + this.id + ", Polarity: " + this.polarity + ", Strength: " + this.strength + ", Velocity: " + this.velocity + ", Acc: " + this.acceleration + ", Mass: " + this.mass + ", Height: " + this.height;
+	return "Pendulum: Polarity: " + this.polarity + ", Strength: " + this.strength + ", Velocity: " + this.velocity + ", Acc: " + this.acceleration + ", Mass: " + this.mass + ", Height: " + this.height;
 });
 
 Pendulum.method(function flushTrace() {
