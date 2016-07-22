@@ -2,8 +2,7 @@ function Canvas(domObj) {
 	Item.call(this);
 	this.domObj = domObj;
 	this.ctx = this.domObj.getContext("2d");
-	this.circlesCanvas = undefined;
-
+	
 	// Configure canvas
 	this.domObj.height = 500;
 	this.domObj.width = this.domObj.height;
@@ -30,8 +29,19 @@ function Canvas(domObj) {
 	// Initial listeners
 	this.initListeners();
 
-	// Pre-render circles (optimization)
+	// Create more canvases
+	this.circlesCanvas = document.createElement('canvas');
+	this.circlesCanvas.width = this.domObj.width;
+	this.circlesCanvas.height = this.domObj.height;
+	this.circlesCanvasCtx = this.circlesCanvas.getContext("2d");
+	this.magnetsCanvas = document.createElement('canvas');
+	this.magnetsCanvas.width = this.domObj.width;
+	this.magnetsCanvas.height = this.domObj.height;
+	this.magnetsCanvasCtx = this.magnetsCanvas.getContext("2d");
+
+	// Pre-render canvas (optimization)
 	this.renderCircles();
+	this.renderMagnets();
 }
 
 Canvas.inherits(Item);
@@ -52,9 +62,7 @@ Canvas.method(function redraw() {
 		}
 
 		// Draw magnets
-		for(var i=0; i < that.magnets.length; i++) {
-			that.magnets[i].draw(that.ctx);
-		}
+		that.ctx.drawImage(that.magnetsCanvas, 0, 0);
 
 		// Draw pendulums
 		for(var i=0; i < that.pendulums.length; i++) {
@@ -93,14 +101,16 @@ Canvas.method(function initCircles() {
 });
 
 Canvas.method(function renderCircles() {
-	this.circlesCanvas = document.createElement('canvas');
-	this.circlesCanvas.width = this.domObj.width;
-	this.circlesCanvas.height = this.domObj.height;
-	var ctx = this.circlesCanvas.getContext("2d");
-
-	// Draw circles
+	this.circlesCanvasCtx.clearRect(0,0,this.domObj.width, this.domObj.height);
 	for(var i=0; i < this.circles.length; i++) {
-		this.circles[i].draw(ctx);
+		this.circles[i].draw(this.circlesCanvasCtx);
+	}
+});
+
+Canvas.method(function renderMagnets() {
+	this.magnetsCanvasCtx.clearRect(0,0,this.domObj.width, this.domObj.height);
+	for(var i=0; i < this.magnets.length; i++) {
+		this.magnets[i].draw(this.magnetsCanvasCtx);
 	}
 });
 
@@ -137,11 +147,12 @@ Canvas.method(function initListeners() {
 	});
 
 	this.domObj.addEventListener("mousemove", function(e) {
-		var rect = that.domObj.getBoundingClientRect();
-		point = that.getRelativePoint(e,rect);
 		if(that.selectedItem != undefined) {
+			var rect = that.domObj.getBoundingClientRect();
+			point = that.getRelativePoint(e,rect);
 			that.selectedItem.point.x = point.x;
 			that.selectedItem.point.y = point.y;
+			that.renderMagnets();
 		}
 	});
 });
