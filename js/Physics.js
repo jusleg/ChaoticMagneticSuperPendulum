@@ -5,18 +5,27 @@ function Physics(pendulum, magnets) {
 	this.t=0;
 	this.pendulum = pendulum;
 	this.magnets = magnets;
+
+	// Simulation variables
+	this.F_grav = new Location(0,0);
+	this.F_fric = new Location(0,0);
+	this.F_m_tot = new Location(0,0);	
 }
 
 Physics.method(function simulateStep(){
 
 	//Gravity
-	var F_grav = new Location(-this.k_h*(this.pendulum.point.x-canvas.centerX),-this.k_h*(this.pendulum.point.y-canvas.centerY));
+	this.F_grav.x = -this.k_h*(this.pendulum.point.x-canvas.centerX);
+	this.F_grav.y = -this.k_h*(this.pendulum.point.y-canvas.centerY);
 
 	// Friction
-	var F_fric = new Location(-this.k_f*this.pendulum.velocity.x, -this.k_f*this.pendulum.velocity.y);
+	this.F_fric.x = -this.k_f*this.pendulum.velocity.x;
+	this.F_fric.y = -this.k_f*this.pendulum.velocity.y;
 
 	// Magnetic force
-	var F_m_tot = new Location(0,0);
+	this.F_m_tot.x = 0;
+	this.F_m_tot.y = 0;
+
 	for (var i=0; i < this.magnets.length; i++){
 		var magnet = this.magnets[i];
 	
@@ -40,11 +49,11 @@ Physics.method(function simulateStep(){
 		}
 
 		// Sum contribution of all magnets into the total force (2D vector addition)
-		F_m_tot.x += MU * this.pendulum.polarity * magnet.polarity * Math.pow(this.pendulum.strength,2) / (4 * PI * Math.pow(d,3)) * (this.pendulum.point.x - magnet.point.x); 
-		F_m_tot.y += MU * this.pendulum.polarity * magnet.polarity * Math.pow(this.pendulum.strength,2) / (4 * PI * Math.pow(d,3)) * (this.pendulum.point.y - magnet.point.y);
+		this.F_m_tot.x += MU * this.pendulum.polarity * magnet.polarity * Math.pow(this.pendulum.strength,2) / (4 * PI * Math.pow(d,3)) * (this.pendulum.point.x - magnet.point.x); 
+		this.F_m_tot.y += MU * this.pendulum.polarity * magnet.polarity * Math.pow(this.pendulum.strength,2) / (4 * PI * Math.pow(d,3)) * (this.pendulum.point.y - magnet.point.y);
 	}
-	this.pendulum.acceleration.x = (F_grav.x + F_fric.x + F_m_tot.x) / this.pendulum.mass;
-	this.pendulum.acceleration.y = (F_grav.y + F_fric.y + F_m_tot.y) / this.pendulum.mass;
+	this.pendulum.acceleration.x = (this.F_grav.x + this.F_fric.x + this.F_m_tot.x) / this.pendulum.mass;
+	this.pendulum.acceleration.y = (this.F_grav.y + this.F_fric.y + this.F_m_tot.y) / this.pendulum.mass;
 	this.pendulum.velocity.x += this.pendulum.acceleration.x *DELTA_T;
 	this.pendulum.velocity.y += this.pendulum.acceleration.y *DELTA_T;
 
