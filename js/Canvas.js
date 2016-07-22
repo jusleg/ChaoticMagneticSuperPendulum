@@ -65,7 +65,7 @@ Canvas.method(function redraw() {
 });
 
 Canvas.method(function initMagnets() {
-	this.magnets = [];
+	this.magnets.length = 0;
 	for(var i=1; i<=this.totalMagnets; i++) {
 		var x = this.centerX - this.circles[this.magnetsPosition].radius * Math.sin((2*Math.PI*i)/this.totalMagnets);
 		var y = this.centerY - this.circles[this.magnetsPosition].radius * Math.cos((2*Math.PI*i)/this.totalMagnets);
