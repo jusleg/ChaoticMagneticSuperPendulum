@@ -2,6 +2,7 @@ function Canvas(domObj) {
 	Item.call(this);
 	this.domObj = domObj;
 	this.ctx = this.domObj.getContext("2d");
+	this.circlesCanvas = undefined;
 
 	// Configure canvas
 	this.domObj.height = 500;
@@ -28,6 +29,9 @@ function Canvas(domObj) {
 
 	// Initial listeners
 	this.initListeners();
+
+	// Pre-render circles (optimization)
+	this.renderCircles();
 }
 
 Canvas.inherits(Item);
@@ -38,12 +42,10 @@ Canvas.method(function redraw() {
 	return function() {
 		// Clear canvas
 		that.ctx.clearRect(0,0,that.domObj.width, that.domObj.height);
-		
-		// Draw circles
-		for(var i=0; i < that.circles.length; i++) {
-			that.circles[i].draw(that.ctx);
-		}
 
+		// Draw circles
+		that.ctx.drawImage(that.circlesCanvas, 0, 0);
+		
 		// Draw trace
 		for(var i=0; i < that.pendulums.length; i++) {
 			that.pendulums[i].drawTrace(that.ctx);
@@ -87,6 +89,18 @@ Canvas.method(function initCircles() {
 	this.circles = [];
 	for(var i=1; i <= this.totalCircles; i++) {
 		this.circles.push(new Circle(this.centerX, this.centerY, i*this.domObj.height/10));
+	}
+});
+
+Canvas.method(function renderCircles() {
+	this.circlesCanvas = document.createElement('canvas');
+	this.circlesCanvas.width = this.domObj.width;
+	this.circlesCanvas.height = this.domObj.height;
+	var ctx = this.circlesCanvas.getContext("2d");
+
+	// Draw circles
+	for(var i=0; i < this.circles.length; i++) {
+		this.circles[i].draw(ctx);
 	}
 });
 
