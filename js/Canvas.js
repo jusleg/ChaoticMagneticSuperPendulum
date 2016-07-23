@@ -130,7 +130,7 @@ Canvas.method(function flushTrace() {
 Canvas.method(function initListeners() {
 	var that = this;
 
-	this.domObj.addEventListener("dblclick", function(e) {
+	onDblClick = function(e) {
 		var rect = that.domObj.getBoundingClientRect();
 		point = that.getRelativePoint(e,rect);
 		var parts = that.pendulums.concat(that.magnets);
@@ -141,9 +141,11 @@ Canvas.method(function initListeners() {
 				break;
 			}
 		}
-	});
+	};
+	this.domObj.addEventListener("dblclick", onDblClick);
+	$(this.domObj).on("doubletap", onDblClick);
 
-	this.domObj.addEventListener("mousedown", function(e) {
+	onMouseDown = function(e) {
 		var rect = that.domObj.getBoundingClientRect();
 		point = that.getRelativePoint(e,rect);
 		var parts = that.pendulums.concat(that.magnets);
@@ -153,15 +155,22 @@ Canvas.method(function initListeners() {
 				break;
 			}
 		}
-	});
+	};
+	this.domObj.addEventListener("mousedown", onMouseDown);
+	this.domObj.addEventListener("touchstart", onMouseDown);
 
-	this.domObj.addEventListener("mouseup", function(e) {
+	onMouseUp = function(e) {
 		if(that.selectedItem != undefined) {
 			that.selectedItem = undefined;
 		}
-	});
+	}
+	this.domObj.addEventListener("mouseup", onMouseUp);
+	this.domObj.addEventListener("touchend", onMouseUp);
 
-	this.domObj.addEventListener("mousemove", function(e) {
+	onMouseMove = function(e) {
+
+		// Prevent scrolling on mobile
+		e.preventDefault();
 		if(that.selectedItem != undefined) {
 			var rect = that.domObj.getBoundingClientRect();
 			point = that.getRelativePoint(e,rect);
@@ -169,10 +178,21 @@ Canvas.method(function initListeners() {
 			that.selectedItem.point.y = point.y;
 			that.renderMagnets();
 		}
-	});
+	}
+	this.domObj.addEventListener("mousemove", onMouseMove);
+	this.domObj.addEventListener("touchmove", onMouseMove);
 });
 
 Canvas.method(function getRelativePoint(e, rect) {
+	// Hack for mobile browsers
+	if(e.type.startsWith("touch")) {
+		e.clientX = e.touches[0].clientX;
+		e.clientY = e.touches[0].clientY;
+		
+	} else if(e.type == "doubletap") {
+		e.clientX = e.x;
+		e.clientY = e.y;
+	}
         return new Location((e.clientX - rect.left)*(this.domObj.width/rect.width),(e.clientY - rect.top)*(this.domObj.height/rect.height));
 });
 
