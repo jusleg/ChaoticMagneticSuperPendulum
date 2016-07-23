@@ -138,6 +138,7 @@ Canvas.method(function initListeners() {
 		for(var i=0; i < that.magnets.length; i++) {
 			if(that.magnets[i].contains(point.x,point.y)) {
 				that.magnets[i].togglePolarity();
+				that.renderMagnets();
 				break;
 			}
 		}

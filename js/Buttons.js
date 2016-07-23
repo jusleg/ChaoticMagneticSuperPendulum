@@ -58,6 +58,7 @@ resetBtn.addEventListener("click", function() {
 addNorth = document.getElementById("addNorth");
 addNorth.addEventListener("click", function() {
 	canvas.addMagnet(canvas.domObj.width*0.1, canvas.domObj.height*0.1);	
+	canvas.renderMagnets();
 });
 
 pauseBtn = document.getElementById("pause");
