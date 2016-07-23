@@ -28,6 +28,9 @@ startBtn.addEventListener("click", function() {
 		canvas.started = true;
 		startBtn.innerHTML = "Update";
 
+		// Disable second pendulum modification
+		addSecondPendulum.disabled = true;
+
 		for(var i=0; i < canvas.pendulums.length; i++) {
 			// Enable tracing
 			canvas.pendulums[i].enableTrace = true;
@@ -59,6 +62,7 @@ addNorth.addEventListener("click", function() {
 });
 
 addSecondPendulum = document.getElementById("pendulumNum");
+addSecondPendulum.disabled = false; // Force option (solution for browser caching)
 addSecondPendulum.addEventListener("click", function() {
 	canvas.toggleSecondPendulum();
 	if(canvas.pendulums.length == 1) {

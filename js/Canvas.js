@@ -178,21 +178,7 @@ Canvas.method(function getRelativePoint(e, rect) {
 
 Canvas.method(function toggleSecondPendulum() {	
 	if(this.pendulums.length == 1) {
-
-		var pendulum = new Pendulum(this.domObj.width*0.9, this.domObj.height*0.8691, this.defaultPolarity, this.magnets, '#348899', '#348899');
-	
-		// Create pendulum
-		this.pendulums.push(pendulum);
-
-		// Update values from slider
-		readSliders();
-		
-		// Enable tracing
-		pendulum.enableTrace = this.started;
-
-		// Reset previous position
-		pendulum.previousLocation.x = pendulum.point.x;
-		pendulum.previousLocation.y = pendulum.point.y;
+		this.pendulums.push(new Pendulum(this.domObj.width*0.9, this.domObj.height*0.8691, this.defaultPolarity, this.magnets, '#348899', '#348899'));
 	} else {
 		this.pendulums.pop();
 	}
