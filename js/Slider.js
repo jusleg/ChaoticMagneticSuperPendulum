@@ -17,4 +17,5 @@ $('#sliderMagnets').on("change", function() {
     $("#initialMagnets").html($("#sliderMagnets").val());
     canvas.totalMagnets = $("#sliderMagnets").val();
     canvas.initMagnets();
+    canvas.renderMagnets();
 });
