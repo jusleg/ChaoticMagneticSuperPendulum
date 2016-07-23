@@ -2,7 +2,6 @@ function Physics(pendulum, magnets) {
 	Item.call(this);
 	this.k_h=0;
 	this.k_f=0;
-	this.t=0;
 	this.pendulum = pendulum;
 	this.magnets = magnets;
 
@@ -59,7 +58,5 @@ Physics.method(function simulateStep(){
 
 	this.pendulum.point.x += this.pendulum.velocity.x*DELTA_T + 0.5*this.pendulum.acceleration.x*Math.pow(DELTA_T,2);
 	this.pendulum.point.y += this.pendulum.velocity.y*DELTA_T + 0.5*this.pendulum.acceleration.y*Math.pow(DELTA_T,2);
-
-	this.t+=DELTA_T;	// Go forward in time by one step
 });
 
