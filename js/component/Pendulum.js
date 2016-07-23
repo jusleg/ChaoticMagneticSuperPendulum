@@ -6,9 +6,7 @@ function Pendulum(x, y, polarity, magnets, stringColor, traceColor) {
 	this.acceleration = new Location(0, 0);
 	this.mass = 0;
 	this.height = 0;
-	this.trace = [];
-	this.traceEvery = 10;
-	this.traceNow = 0;
+	this.previousLocation = new Location(this.point.x, this.point.y);
 	this.enableTrace = false;
 	this.physics = new Physics(this, magnets);
 	this.freeze = false;
@@ -18,18 +16,11 @@ Pendulum.inherits(Magnet);
 
 Pendulum.method(function draw(ctx) {
 
-	// Store old position
-	if(this.enableTrace && ++this.traceNow == this.traceEvery) {
-		this.trace.push(new Location(this.point.x, this.point.y));
-		this.traceNow = 0;
-	}
-
 	if(this.polarity == 1) {
 		this.color = 'red';
 	} else {
 		this.color = 'blue';
 	}
-
 		
 	// Draw circle
 	ctx.beginPath();
@@ -52,19 +43,19 @@ Pendulum.method(function drawString(ctx, centerX, centerY) {
 });
 
 Pendulum.method(function drawTrace(ctx) {
-	// Draw trace
-	ctx.beginPath();
-	for(var i=0; i < this.trace.length; i++) {
+	if(this.enableTrace) {
+		ctx.beginPath();
 		ctx.strokeStyle = this.traceColor;
-		ctx.arc(this.trace[i].x, this.trace[i].y, 0.01, 0, 2 * Math.PI, true);
+		ctx.moveTo(this.previousLocation.x, this.previousLocation.y);
+		ctx.lineTo(this.point.x, this.point.y);
+		ctx.stroke();
+		
+		// Update previous location
+		this.previousLocation.x = this.point.x;
+		this.previousLocation.y = this.point.y;
 	}
-	ctx.stroke();
 });
 
 Pendulum.method(function toString(){
 	return "Pendulum: Polarity: " + this.polarity + ", Strength: " + this.strength + ", Velocity: " + this.velocity + ", Acc: " + this.acceleration + ", Mass: " + this.mass + ", Height: " + this.height;
-});
-
-Pendulum.method(function flushTrace() {
-	this.trace = [];
 });

@@ -29,15 +29,23 @@ function Canvas(domObj) {
 	// Initial listeners
 	this.initListeners();
 
-	// Create more canvases
+	// Circles canvas
 	this.circlesCanvas = document.createElement('canvas');
 	this.circlesCanvas.width = this.domObj.width;
 	this.circlesCanvas.height = this.domObj.height;
 	this.circlesCanvasCtx = this.circlesCanvas.getContext("2d");
+
+	// Magnets canvas
 	this.magnetsCanvas = document.createElement('canvas');
 	this.magnetsCanvas.width = this.domObj.width;
 	this.magnetsCanvas.height = this.domObj.height;
 	this.magnetsCanvasCtx = this.magnetsCanvas.getContext("2d");
+
+	// Trace canvas
+	this.traceCanvas = document.createElement('canvas');
+	this.traceCanvas.width = this.domObj.width;
+	this.traceCanvas.height = this.domObj.height;
+	this.traceCanvasCtx = this.traceCanvas.getContext("2d");
 
 	// Pre-render canvas (optimization)
 	this.renderCircles();
@@ -56,10 +64,13 @@ Canvas.method(function redraw() {
 		// Draw circles
 		that.ctx.drawImage(that.circlesCanvas, 0, 0);
 		
-		// Draw trace
+		// Render traces
 		for(var i=0; i < that.pendulums.length; i++) {
-			that.pendulums[i].drawTrace(that.ctx);
+			that.pendulums[i].drawTrace(that.traceCanvasCtx);
 		}
+
+		// Draw traces
+		that.ctx.drawImage(that.traceCanvas, 0, 0);
 
 		// Draw magnets
 		that.ctx.drawImage(that.magnetsCanvas, 0, 0);
@@ -112,6 +123,10 @@ Canvas.method(function renderMagnets() {
 	for(var i=0; i < this.magnets.length; i++) {
 		this.magnets[i].draw(this.magnetsCanvasCtx);
 	}
+});
+
+Canvas.method(function flushTrace() {
+	this.traceCanvasCtx.clearRect(0,0,this.domObj.width, this.domObj.height);
 });
 
 Canvas.method(function initListeners() {

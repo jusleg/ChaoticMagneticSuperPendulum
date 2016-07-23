@@ -52,9 +52,7 @@ switchPolar.addEventListener("click", function() {
 
 resetBtn = document.getElementById("reset");
 resetBtn.addEventListener("click", function() {
-	for(var i=0; i < canvas.pendulums.length; i++) {
-		canvas.pendulums[i].flushTrace();
-	}
+	canvas.flushTrace();
 });
 
 addNorth = document.getElementById("addNorth");
