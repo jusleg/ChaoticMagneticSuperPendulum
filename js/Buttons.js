@@ -54,6 +54,16 @@ addNorth.addEventListener("click", function() {
 	canvas.renderMagnets();
 });
 
+addSecondPendulum = document.getElementById("pendulumNum");
+addSecondPendulum.addEventListener("click", function() {
+	canvas.toggleSecondPendulum();
+	if(canvas.pendulums.length == 1) {
+		addSecondPendulum.innerHTML = "Add Second Pendulum";
+	} else {
+		addSecondPendulum.innerHTML = "Remove Second Pendulum";
+	}
+});
+
 pauseBtn = document.getElementById("pause");
 pauseBtn.addEventListener("click", function() {
 	if(canvas.pause) {
