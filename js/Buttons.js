@@ -43,13 +43,6 @@ startBtn.addEventListener("click", function() {
 	}
 });
 
-switchPolarity = document.getElementById("switchPolar");
-switchPolar.addEventListener("click", function() {
-	for(var i=0; i < canvas.pendulums.length; i++) {
-		canvas.pendulums[i].togglePolarity();
-	}
-});
-
 resetBtn = document.getElementById("reset");
 resetBtn.addEventListener("click", function() {
 	canvas.flushTrace();

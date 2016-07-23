@@ -135,9 +135,10 @@ Canvas.method(function initListeners() {
 	this.domObj.addEventListener("dblclick", function(e) {
 		var rect = that.domObj.getBoundingClientRect();
 		point = that.getRelativePoint(e,rect);
-		for(var i=0; i < that.magnets.length; i++) {
-			if(that.magnets[i].contains(point.x,point.y)) {
-				that.magnets[i].togglePolarity();
+		var parts = that.pendulums.concat(that.magnets);
+		for(var i=0; i < parts.length; i++) {
+			if(parts[i].contains(point.x,point.y)) {
+				parts[i].togglePolarity();
 				that.renderMagnets();
 				break;
 			}
@@ -147,7 +148,7 @@ Canvas.method(function initListeners() {
 	this.domObj.addEventListener("mousedown", function(e) {
 		var rect = that.domObj.getBoundingClientRect();
 		point = that.getRelativePoint(e,rect);
-		var parts = that.magnets.concat(that.pendulums);
+		var parts = that.pendulums.concat(that.magnets);
 		for(var i=0; i < parts.length; i++) {
 			if(parts[i].contains(point.x,point.y)) {
 				that.selectedItem = parts[i];
