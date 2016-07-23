@@ -28,9 +28,13 @@ startBtn.addEventListener("click", function() {
 		canvas.started = true;
 		startBtn.innerHTML = "Update";
 
-		// Enable tracing
 		for(var i=0; i < canvas.pendulums.length; i++) {
+			// Enable tracing
 			canvas.pendulums[i].enableTrace = true;
+
+			// Reset previous position
+			canvas.pendulums[i].previousLocation.x = canvas.pendulums[i].point.x;
+			canvas.pendulums[i].previousLocation.y = canvas.pendulums[i].point.y;
 		}
 
 		window.setInterval(function() {
