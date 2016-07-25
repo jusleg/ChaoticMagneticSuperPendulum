@@ -198,7 +198,7 @@ Canvas.method(function getRelativePoint(e, rect) {
 
 Canvas.method(function toggleSecondPendulum() {	
 	if(this.pendulums.length == 1) {
-		this.pendulums.push(new Pendulum(this.domObj.width*0.9, this.domObj.height*0.8691, this.defaultPolarity, this.magnets, '#348899', '#348899'));
+		this.pendulums.push(new Pendulum(this.domObj.width*0.9309, this.domObj.height*0.8691, this.defaultPolarity, this.magnets, '#348899', '#348899'));
 	} else {
 		this.pendulums.pop();
 	}
